@@ -10,5 +10,11 @@ package mytunes.dal;
  * @author domin
  */
 public class PlaylistDBDAO {
+    private int id;
+    private String name;
+    private int songCount;
+    private int playlistTime;
+    
+    
     
 }
