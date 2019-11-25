@@ -9,6 +9,6 @@ package mytunes.dal;
  *
  * @author domin
  */
-public class GenereDBDAO {
+public class GenreDBDAO {
     
 }
