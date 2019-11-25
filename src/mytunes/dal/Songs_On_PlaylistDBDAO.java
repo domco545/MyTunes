@@ -26,7 +26,7 @@ public class Songs_On_PlaylistDBDAO {
     SQLServerDataSource ds;
     
     public Songs_On_PlaylistDBDAO() {
-        SQLServerDataSource ds = new SQLServerDataSource();
+        ds = new SQLServerDataSource();
         ds.setDatabaseName("MyTunesCSe19B3");
         ds.setUser("CSe19B_3");
         ds.setPassword("CSe19B_3");
@@ -36,16 +36,17 @@ public class Songs_On_PlaylistDBDAO {
     
     
     public List<Songs_On_playlist> getAllSongsInPlaylist(int playlistID){
-        List<Songs_On_playlist> songs = new ArrayList();
-        
+        List<Songs_On_playlist> songs = new ArrayList<Songs_On_playlist>();
         try(Connection conn = ds.getConnection()){
             String sql = "SELECT * FROM Songs_On_Playlist WHERE playlist_id=?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, playlistID);
             ResultSet rs = pstmt.executeQuery();
-            
+
             while(rs.next()){
-                songs.add(new Songs_On_playlist(rs.getInt("song_id"), rs.getInt("playlist_id")));
+                Songs_On_playlist p = new Songs_On_playlist(rs.getInt("playlist_id"),rs.getInt("song_id"));
+                p.setID(rs.getInt("id"));
+                songs.add(p);
             }
         } catch (SQLServerException ex) {
             Logger.getLogger(Songs_On_PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);

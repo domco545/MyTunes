@@ -29,5 +29,11 @@ public class Songs_On_playlist {
         Songs_On_PlaylistDBDAO sop = new Songs_On_PlaylistDBDAO();
         this.id = sop.getNextID();
     }
+
+    @Override
+    public String toString() {
+        return "Songs_On_playlist{" + "playlist_id=" + playlist_id + ", song_id=" + song_id + '}';
+    }
+    
     
 }
