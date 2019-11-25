@@ -56,21 +56,37 @@ public class Songs_On_PlaylistDBDAO {
         return songs;
     }
 
-    public int getNextID() {
-            try(Connection con = ds.getConnection()){
-            String sql = "SELECT TOP (1) id FROM Songs_On_Playlist ORDER BY id DESC";
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
+//    public int getNextID() {
+//            try(Connection con = ds.getConnection()){
+//            String sql = "SELECT TOP (1) id FROM Songs_On_Playlist ORDER BY id DESC";
+//            Statement stmt = con.createStatement();
+//            ResultSet rs = stmt.executeQuery(sql);
+//            
+//            if (rs.next()) {
+//                return rs.getInt("id")+1;
+//            }
+//
+//    }   catch (SQLServerException ex) {
+//            Logger.getLogger(Songs_On_PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Songs_On_PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//          return -1;
+//    }
+    
+    public void insertSongToPlaylist(int playlistID, int songID){
+        try(Connection con = ds.getConnection()){
+            String sql = "INSERT INTO Songs_On_Playlist (playlist_id,song_id) VALUES (?,?)";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, playlistID);
+            pstmt.setInt(2, songID);
             
-            if (rs.next()) {
-                return rs.getInt("id")+1;
-            }
-
-    }   catch (SQLServerException ex) {
+            pstmt.executeUpdate();
+        } catch (SQLServerException ex) {
             Logger.getLogger(Songs_On_PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(Songs_On_PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-          return -1;
+    
     }
 }

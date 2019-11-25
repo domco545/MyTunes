@@ -25,10 +25,10 @@ public class Songs_On_playlist {
         this.id = id;
     }
     
-    public void assignID(){
-        Songs_On_PlaylistDBDAO sop = new Songs_On_PlaylistDBDAO();
-        this.id = sop.getNextID();
-    }
+//    public void assignID(){
+//        Songs_On_PlaylistDBDAO sop = new Songs_On_PlaylistDBDAO();
+//        this.id = sop.getNextID();
+//    }
 
     @Override
     public String toString() {
