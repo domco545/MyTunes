@@ -5,6 +5,8 @@
  */
 package mytunes.be;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author domin
@@ -24,5 +26,15 @@ public class Genre {
 
     public String getName() {
         return name;
+    }
+    
+    ArrayList<String> genre = new ArrayList<String>();
+
+    public ArrayList<String> genre() {
+        genre.add("pop");
+        genre.add("rock");
+        genre.add("techno");
+        genre.add("rap");
+        return (genre);
     }
 }
