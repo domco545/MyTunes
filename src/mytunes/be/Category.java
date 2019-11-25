@@ -9,11 +9,11 @@ package mytunes.be;
  *
  * @author domin
  */
-public class Song {
+public class Category {
     private int id;
-    private String title;
-    private String artist;
-    private int category;
-    private int time;
-    private String path;
+    private String name;
+
+    public Category(String name) {
+        this.name = name;
+    }  
 }
