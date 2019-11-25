@@ -8,6 +8,7 @@ package mytunes.dal;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -53,12 +54,7 @@ public class SongDBDAO {
            songs.add(song);
          }
         return songs;
-       
-       
        }
-       
-       
-       
        catch (SQLServerException ex) {
             Logger.getLogger(SongDBDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -66,7 +62,42 @@ public class SongDBDAO {
         }
         return null;
    }
-   
+   private int getNextAvailableId() {
+         try(Connection con=ds.getConnection()){
+         String sql="select top (1) id from Songs order by id desc";
+         Statement s= con.createStatement();
+        ResultSet r = s.executeQuery(sql);
+        if(r.next())
+         { return r.getInt("id")+1; }
+         } catch (SQLServerException ex) {
+            Logger.getLogger(SongDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(SongDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return -1;
+    }
+   public Song createSong(String title,String artist,int genre,int time,String path)
+   {
+       int id = getNextAvailableId();
+       try(Connection con=ds.getConnection()){
+       String sql = "insert into Songs (id,title,artist,genre,time,path) values (?,?,?,?,?,?)";
+        PreparedStatement p=con.prepareStatement(sql);
+        p.setInt(1,id);
+        p.setString(2, title);
+        p.setString(3, artist);
+        p.setInt(4, genre);
+        p.setInt(5, time);
+        p.setString(6, path);
+        p.executeUpdate();
+        return new Song(id,title,artist,genre,time,path);
+       
+       } catch (SQLServerException ex) {
+            Logger.getLogger(SongDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(SongDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return null;
+   }
    
    
 }
