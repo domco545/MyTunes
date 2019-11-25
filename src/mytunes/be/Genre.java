@@ -9,11 +9,20 @@ package mytunes.be;
  *
  * @author domin
  */
-public class Category {
+public class Genre {
     private int id;
     private String name;
 
-    public Category(String name) {
+    public Genre(String name, int id) {
         this.name = name;
+        this.id = id;
     }  
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

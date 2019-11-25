@@ -13,7 +13,10 @@ public class Song {
     private int id;
     private String title;
     private String artist;
-    private int category;
+    private int genre;
     private int time;
     private String path;
+    
+    
+   
 }
