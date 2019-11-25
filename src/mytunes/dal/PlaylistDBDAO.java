@@ -9,6 +9,6 @@ package mytunes.dal;
  *
  * @author domin
  */
-public class DBConn {
+public class PlaylistDBDAO {
     
 }
