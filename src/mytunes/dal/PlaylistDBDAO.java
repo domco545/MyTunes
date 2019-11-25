@@ -1,20 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package mytunes.dal;
 
+import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 /**
  *
- * @author domin
+ * @author Martin
  */
 public class PlaylistDBDAO {
-    private int id;
-    private String name;
-    private int songCount;
-    private int playlistTime;
+private SQLServerDataSource ds;
+    public PlaylistDBDAO(){
+  ds = new SQLServerDataSource();
+        ds.setDatabaseName("MyTunesCSe19B3");
+        ds.setUser("CSe19B_3");
+        ds.setPassword("CSe19B_3");
+        ds.setServerName("10.176.111.31");
+        ds.setPortNumber(1433);
+    }
     
+ 
     
     
 }
