@@ -10,6 +10,9 @@ import java.util.List;
 import mytunes.be.Genre;
 import mytunes.be.Playlist;
 import mytunes.be.Song;
+import mytunes.be.Songs_On_playlist;
+import mytunes.dal.Songs_On_PlaylistDBDAO;
+
 
 /**
  *
@@ -19,6 +22,8 @@ public class BllManager {
     List<Genre> genreList = new ArrayList();
     List<Song> songList = new ArrayList();
     List<Playlist> playlistList = new ArrayList();
+    List<Song> playlistSongs = new ArrayList();
+    List<Songs_On_playlist> sop = new ArrayList<Songs_On_playlist>();
 
     public void genre() {
         //ArrayList<Genre> genre = new ArrayList<Genre>();
@@ -39,5 +44,19 @@ public class BllManager {
         return null;
     }
     
+    public void getAllSongsOnPlaylist(int id){
+        Songs_On_PlaylistDBDAO sopdb = new Songs_On_PlaylistDBDAO();
+        sop = sopdb.getAllSongsInPlaylist(1);
+    }
+    
+    public void fillPlaylistList(){
+        for (Songs_On_playlist info : sop) {
+            for (Song song : songList) {
+                if(info.getSong_id() == song.getId()){
+                    playlistSongs.add(song);
+                }
+            }
+        }
+    }
 
 }

@@ -34,6 +34,12 @@ public class Songs_On_playlist {
     public String toString() {
         return "Songs_On_playlist{" + "playlist_id=" + playlist_id + ", song_id=" + song_id + '}';
     }
+
+    public int getSong_id() {
+        return song_id;
+    }
+    
+    
     
     
 }
