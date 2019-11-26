@@ -1,24 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package mytunes.be;
 
+import java.util.*;
+import java.io.*;
 /**
  *
- * @author domin
+ * @author Martin
  */
-public class Playlist {
+public class Playlist{
     private int id;
     private String name;
-    private int song_count;
+    
     private int playlist_time;
 
     public Playlist(String name) {
-        this.name = name;
+      
+	
+	//Creates a Playlist object that contains an ArrayList for Songs.
+	public Playlist()
+	{
+		playlist = new ArrayList<Song>();
+	}
+	
+	//Adds a Song to a Playlist.
+	public void addSong(Song song)
+	{
+		playlist.add(song);
+	}
+	
+	//Returns the size of a Playlist.
+	public int getPlaylistSize()
+	{
+		return playlist.size();
+	}
     }
-    
-    
-    
-}
