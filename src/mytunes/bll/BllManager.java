@@ -19,6 +19,14 @@ public class BllManager {
     List<Genre> genreList = new ArrayList();
     List<Song> songList = new ArrayList();
     List<Playlist> playlistList = new ArrayList();
-    
-    
+
+    public ArrayList<String> genre() {
+        ArrayList<String> genre = new ArrayList<String>();
+        genre.add("pop");
+        genre.add("rock");
+        genre.add("techno");
+        genre.add("rap");
+        return (genre);
+    }
+
 }
