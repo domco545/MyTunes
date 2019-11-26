@@ -6,19 +6,22 @@
 package mytunes.be;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author domin
  */
 public class Genre {
+
+    public Genre(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
     private int id;
     private String name;
 
-    public Genre(String name, int id) {
-        this.name = name;
-        this.id = id;
-    }  
+  
 
     public int getId() {
         return id;
@@ -28,10 +31,11 @@ public class Genre {
         return name;
     }
     
-    ArrayList<String> genre = new ArrayList<String>();
+    
 
-    public ArrayList<String> genre() {
-        genre.add("pop");
+    public ArrayList<Genre> getAllGenre() {
+        List<Genre> genre = new ArrayList<Genre>();
+        genre.add(1,"pop");
         genre.add("rock");
         genre.add("techno");
         genre.add("rap");
