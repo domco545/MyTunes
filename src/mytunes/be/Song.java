@@ -17,7 +17,7 @@ public class Song {
     private int time;
     private String path;
 
-    public Song(int id, String title, String artist, int genre, int time, String path) {
+    public Song(int id,String title, String artist, int genre, int time, String path) {
         this.id = id;
         this.title = title;
         this.artist = artist;
