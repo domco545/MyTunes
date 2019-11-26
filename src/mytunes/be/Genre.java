@@ -31,14 +31,8 @@ public class Genre {
         return name;
     }
     
-    
-
-    public ArrayList<Genre> getAllGenre() {
-        List<Genre> genre = new ArrayList<Genre>();
-        genre.add(1,"pop");
-        genre.add("rock");
-        genre.add("techno");
-        genre.add("rap");
-        return (genre);
-    }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 8e8302e99370f93c7bcf7f15650ce113f00c621e
