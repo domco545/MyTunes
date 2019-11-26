@@ -30,15 +30,4 @@ public class Genre {
     public String getName() {
         return name;
     }
-    
-    
-
-    public ArrayList<Genre> getAllGenre() {
-        List<Genre> genre = new ArrayList<Genre>();
-        genre.add(1,"pop");
-        genre.add("rock");
-        genre.add("techno");
-        genre.add("rap");
-        return (genre);
-    }
 }
