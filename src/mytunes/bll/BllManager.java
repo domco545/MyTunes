@@ -11,6 +11,7 @@ import mytunes.be.Genre;
 import mytunes.be.Playlist;
 import mytunes.be.Song;
 import mytunes.be.Songs_On_playlist;
+import mytunes.dal.SongDBDAO;
 import mytunes.dal.Songs_On_PlaylistDBDAO;
 
 
@@ -24,6 +25,17 @@ public class BllManager {
     List<Playlist> playlistList = new ArrayList();
     List<Song> playlistSongs = new ArrayList();
     List<Songs_On_playlist> sop = new ArrayList<Songs_On_playlist>();
+
+    public BllManager() {
+        SongDBDAO p = new SongDBDAO();
+        songList = p.getAllSongs();
+        getAllSongsOnPlaylist(1);
+        fillPlaylistList();
+        
+        
+    }
+    
+    
 
     public void genre() {
         //ArrayList<Genre> genre = new ArrayList<Genre>();
@@ -46,7 +58,7 @@ public class BllManager {
     
     public void getAllSongsOnPlaylist(int id){
         Songs_On_PlaylistDBDAO sopdb = new Songs_On_PlaylistDBDAO();
-        sop = sopdb.getAllSongsInPlaylist(1);
+        sop = sopdb.getAllSongsInPlaylist(id);
     }
     
     public void fillPlaylistList(){
@@ -57,6 +69,10 @@ public class BllManager {
                 }
             }
         }
+    }
+    
+    public List<Song> getme(){
+        return playlistSongs;
     }
 
 }

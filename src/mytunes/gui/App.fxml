@@ -4,9 +4,9 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="297.0" prefWidth="474.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="mytunes.gui.AppController">
+<AnchorPane id="AnchorPane" prefHeight="297.0" prefWidth="474.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.AppController">
     <children>
         <Button fx:id="button" layoutX="126" layoutY="90" onAction="#handleButtonAction" text="Click Me!" />
-      <ListView layoutX="41.0" layoutY="26.0" prefHeight="250.0" prefWidth="391.0" />
+      <ListView fx:id="lstview" layoutX="41.0" layoutY="26.0" prefHeight="250.0" prefWidth="391.0" />
     </children>
 </AnchorPane>
