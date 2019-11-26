@@ -20,15 +20,24 @@ public class BllManager {
     List<Song> songList = new ArrayList();
     List<Playlist> playlistList = new ArrayList();
 
-    public ArrayList<String> genre() {
-        ArrayList<String> genre = new ArrayList<String>();
-        genre.add("pop");
-        genre.add("rock");
-        genre.add("techno");
-        genre.add("rap");
-        return (genre);
+    public void genre() {
+        //ArrayList<Genre> genre = new ArrayList<Genre>();
+        genreList.add(new Genre(1,"Pop"));
+        genreList.add(new Genre(2,"Rock"));
+        genreList.add(new Genre(3,"Techno"));
+        genreList.add(new Genre(4,"Rap"));
     }
-    
+    public String getGenreName(int id)
+    {
+        for (Genre genre : genreList) {
+            if(genre.getId() == id )
+            {
+                return genre.getName();
+            }
+        }
+        
+        return null;
+    }
     
 
 }

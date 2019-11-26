@@ -49,6 +49,11 @@ public class Song {
         this.time = time;
         this.path = path;
     }
+
+    @Override
+    public String toString() {
+        return title + " " +  artist + " " + genre + " " + time + " " + path;
+    }
     
    
     

@@ -33,10 +33,21 @@ public class SongDBDAO {
         ds.setServerName("10.176.111.31");
         ds.setPortNumber(1433);
 }
+    public static void main(String[] args) {
+        SongDBDAO s=new SongDBDAO();
+        List<Song> songs =new ArrayList<Song>();
+        songs=s.getAllSongs();
+        for (Song song : songs) {
+            System.out.println(song);
+        }
+        
+        
+    }
+   
    public List<Song> getAllSongs()
    {
        try(Connection con=ds.getConnection()){
-           String sql="select * from Songs ";
+           String sql="select * from Songs";
          Statement s= con.createStatement();
          List<Song> songs = new ArrayList();
        
@@ -46,7 +57,7 @@ public class SongDBDAO {
              int id = r.getInt("id");
              String title=r.getString("title");
              String artist=r.getString("artist");
-             int genre = r.getInt("genre");
+             int genre = r.getInt("genre_id");
              int time=r.getInt("time");
              String path=r.getString("path");
              
