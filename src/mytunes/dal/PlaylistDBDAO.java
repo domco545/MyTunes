@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Logger;
+import mytunes.be.Playlist;
 /**
  *
  * @author Martin
@@ -31,6 +32,7 @@ private SQLServerDataSource ds;
            PreparedStatement p=con.prepareStatement(sql);
            p.setString(1,name);
            p.executeUpdate();
+           
            
        } catch (SQLServerException ex) {
         Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
