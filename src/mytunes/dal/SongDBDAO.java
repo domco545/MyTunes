@@ -99,6 +99,47 @@ public class SongDBDAO {
        
    }
    
+   public void editSong(Song song)
+   {
+       try(Connection con=ds.getConnection())
+       {
+           String sql="update Songs set title=? , artist=? , genre=? , time=? , path=? where id=?";
+           PreparedStatement p=con.prepareStatement(sql);
+           
+           p.setString(1,song.getTitle());
+           p.setString(2, song.getArtist());
+           p.setInt(3, song.getGenre());
+           p.setInt(4,song.getTime());
+           p.setString(5,song.getPath());
+           p.setInt(6,song.getId());
+           
+           p.executeUpdate();
+       
+       } catch (SQLServerException ex) {
+            Logger.getLogger(SongDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(SongDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+   }
    
+   public void deleteById(Song song)
+   {
+        try(Connection con=ds.getConnection())
+        {
+            String sql = "delete from Songs where id = ?";
+            PreparedStatement p = con.prepareStatement(sql);
+            
+            p.setInt(1,song.getId());
+            
+            p.executeUpdate();
+                    
+        } catch (SQLServerException ex) {
+            Logger.getLogger(SongDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(SongDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   
+   }
 }
    

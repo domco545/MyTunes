@@ -17,6 +17,30 @@ public class Song {
     private int time;
     private String path;
 
+    public String getTitle() {
+        return title;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public int getGenre() {
+        return genre;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public int getId() {
+        return id;
+    }
+
     public Song(int id,String title, String artist, int genre, int time, String path) {
         this.id = id;
         this.title = title;
