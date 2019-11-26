@@ -12,14 +12,5 @@ import java.util.ArrayList;
  */
 public class GenreDBDAO {
 
-    private int id;    
-    ArrayList<String> genre = new ArrayList<String>();
-
-    public ArrayList<String> genre() {
-        genre.add("pop");
-        genre.add("rock");
-        genre.add("techno");
-        genre.add("rap");
-        return (genre);
-    }
+    
 }
