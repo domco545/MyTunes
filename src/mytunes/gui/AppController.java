@@ -18,8 +18,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import mytunes.be.Playlist;
 import mytunes.be.Song;
-import mytunes.bll.*;
 
 /**
  *
@@ -48,11 +48,11 @@ public class AppController implements Initializable {
     @FXML
     private Button btnClose;
     @FXML
-    private TableView<?> lstPlaylists;
+    private TableView<Playlist> lstPlaylists;
     @FXML
-    private ListView<?> lstSOP;
+    private ListView<Song> lstSOP;
     @FXML
-    private TableView<?> lstSongs;
+    private TableView<Song> lstSongs;
     @FXML
     private TextField txtInput;
     @FXML
