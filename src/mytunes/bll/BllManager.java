@@ -45,4 +45,12 @@ public class BllManager {
     public void reloadPlaylists(){
         playlistList = pldb.getAllPlaylists();
     }
+    
+    public List<Song> getAllSongs(){
+        return songList;
+    }
+    
+    public List<Playlist> getAllPlaylists(){
+        return playlistList;
+    }
 }

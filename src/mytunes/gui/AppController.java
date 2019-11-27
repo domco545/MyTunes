@@ -20,13 +20,18 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import mytunes.be.Playlist;
 import mytunes.be.Song;
+import mytunes.bll.BllManager;
 
 /**
  *
  * @author domin
  */
 public class AppController implements Initializable {
-
+    BllManager bll = new BllManager();
+    private ObservableList<Song> obsSongs = FXCollections.observableArrayList(bll.getAllSongs());
+    private ObservableList<Playlist> obsPlaylists = FXCollections.observableArrayList(bll.getAllPlaylists());
+    private ObservableList<Song> obsSOP = FXCollections.observableArrayList();
+    
     @FXML
     private ImageView btnPlay;
     @FXML
@@ -72,7 +77,7 @@ public class AppController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        lstSOP.setItems(obsSongs);
     }
 
     
