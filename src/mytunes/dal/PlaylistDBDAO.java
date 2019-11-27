@@ -88,7 +88,7 @@ private SQLServerDataSource ds;
             ResultSet rs = pstmt.executeQuery();
             
             while(rs.next()){
-                songs.add(new Song(rs.getInt("song_id"), rs.getString("title"), rs.getString("artist"), rs.getInt("genre"), rs.getInt("time"), rs.getString("path")));
+                songs.add(new Song(rs.getInt("song_id"), rs.getString("title"), rs.getString("artist"), rs.getInt("genre_id"), rs.getInt("time"), rs.getString("path")));
             }
              playlist.addSongs(songs); 
              
