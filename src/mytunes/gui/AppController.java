@@ -26,7 +26,6 @@ public class AppController implements Initializable {
     
         private BllManager bll = new BllManager();
 
-        private ObservableList<Song> obssong = FXCollections.observableArrayList(bll.getme());
 
     private Label label;
     @FXML
@@ -43,7 +42,6 @@ public class AppController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        lstview.setItems(obssong);
     }    
     
     

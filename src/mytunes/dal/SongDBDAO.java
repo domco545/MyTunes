@@ -33,16 +33,6 @@ public class SongDBDAO {
         ds.setServerName("10.176.111.31");
         ds.setPortNumber(1433);
 }
-    public static void main(String[] args) {
-        SongDBDAO s=new SongDBDAO();
-        List<Song> songs =new ArrayList<Song>();
-        songs=s.getAllSongs();
-        for (Song song : songs) {
-            System.out.println(song);
-        }
-        
-        
-    }
    
    public List<Song> getAllSongs()
    {
