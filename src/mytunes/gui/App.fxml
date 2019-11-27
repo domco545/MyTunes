@@ -1,12 +1,208 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="297.0" prefWidth="474.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.AppController">
-    <children>
-        <Button fx:id="button" layoutX="126" layoutY="90" onAction="#handleButtonAction" text="Click Me!" />
-      <ListView fx:id="lstview" layoutX="41.0" layoutY="26.0" prefHeight="250.0" prefWidth="391.0" />
-    </children>
-</AnchorPane>
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.AppController">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="MyTunes">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="940.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Button fx:id="btnNewPlst" layoutX="58.0" layoutY="562.0" mnemonicParsing="false" text="New...">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnDeleteSOP" layoutX="470.0" layoutY="561.0" mnemonicParsing="false" text="Delete">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnDeletePlst" layoutX="225.0" layoutY="563.0" mnemonicParsing="false" text="Delete">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnEditPlst" layoutX="145.0" layoutY="562.0" mnemonicParsing="false" text="Edit...">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnMoveUp" layoutX="330.0" layoutY="560.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="38.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="20.0">
+                     <image>
+                        <Image url="@button5.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnNewSongs" layoutX="580.0" layoutY="562.0" mnemonicParsing="false" text="New...">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnDeleteSongs" layoutX="708.0" layoutY="562.0" mnemonicParsing="false" text="Delete">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnEditSongs" layoutX="646.0" layoutY="562.0" mnemonicParsing="false" text="Edit...">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnClose" layoutX="815.0" layoutY="561.0" mnemonicParsing="false" text="Close">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Text layoutX="330.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Songs on playlist">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="58.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Playlists">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="580.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Songs">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <TableView fx:id="lstPlaylists" layoutX="58.0" layoutY="180.0" prefHeight="371.0" prefWidth="227.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="Name" />
+                <TableColumn prefWidth="75.0" text="Songs" />
+                  <TableColumn prefWidth="75.0" text="Time" />
+              </columns>
+            </TableView>
+            <ListView fx:id="lstSOP" layoutX="330.0" layoutY="180.0" prefHeight="371.0" prefWidth="200.0" />
+            <TableView fx:id="lstSongs" layoutX="580.0" layoutY="180.0" prefHeight="371.0" prefWidth="301.0">
+               <columns>
+                  <TableColumn prefWidth="75.0" text="Title" />
+                  <TableColumn prefWidth="75.0" text="Artist" />
+                  <TableColumn prefWidth="75.0" text="Category" />
+                  <TableColumn prefWidth="75.0" text="Time" />
+               </columns>
+            </TableView>
+            <Text layoutX="638.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filter: ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txtInput" layoutX="683.0" layoutY="47.0" prefHeight="25.0" prefWidth="139.0" />
+            <Button layoutX="829.0" layoutY="42.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="36.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="btnFind" fitHeight="21.0" fitWidth="27.0">
+                     <image>
+                        <Image url="@button4.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Slider layoutX="60.0" layoutY="115.0" prefHeight="14.0" prefWidth="173.0" />
+            <Button fx:id="btnMoveBack" layoutX="58.0" layoutY="57.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="0.0" style="-fx-background-radius: 100;;">
+               <graphic>
+                  <ImageView fx:id="btnPreviousSong" fitHeight="39.0" fitWidth="39.0">
+                     <image>
+                        <Image url="@button3.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="120.0" layoutY="44.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-radius: 100;;">
+               <graphic>
+                  <ImageView fx:id="btnPlay" fitHeight="40.0" fitWidth="44.0">
+                     <image>
+                        <Image url="@button1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="187.0" layoutY="57.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" style="-fx-background-radius: 100;;">
+               <graphic>
+                  <ImageView fx:id="btnNextSong" fitHeight="39.0" fitWidth="39.0">
+                     <image>
+                        <Image url="@button2.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="378.0" layoutY="560.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="38.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="btnMoveDown" fitHeight="23.0" fitWidth="20.0" style="-fx-rotate: 180;">
+                     <image>
+                        <Image url="@button5.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="535.0" layoutY="211.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="38.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="btnAddToPL" fitHeight="23.0" fitWidth="20.0" style="-fx-rotate: 270;">
+                     <image>
+                        <Image url="@button5.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Text layoutX="476.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="... is playing">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Label fx:id="lblIsPlaying" layoutX="384.0" layoutY="64.0" />
+         </children>
+    </AnchorPane>
+      <ListView prefHeight="375.0" prefWidth="172.0" />
+  </children>
+</VBox>
