@@ -37,4 +37,12 @@ public class BllManager {
         songList = sdb.getAllSongs();
         playlistList = pldb.getAllPlaylists();
     }
+    
+    public void reloadGenre(){
+        genreList = gdb.loadGenres();
+    }
+    
+    public void reloadPlaylists(){
+        playlistList = pldb.getAllPlaylists();
+    }
 }
