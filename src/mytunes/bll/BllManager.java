@@ -10,7 +10,9 @@ import java.util.List;
 import mytunes.be.Genre;
 import mytunes.be.Playlist;
 import mytunes.be.Song;
+import mytunes.dal.GenreDBDAO;
 import mytunes.dal.PlaylistDBDAO;
+import mytunes.dal.SongDBDAO;
 
 
 /**
@@ -21,11 +23,26 @@ public class BllManager {
     List<Genre> genreList = new ArrayList();
     List<Song> songList = new ArrayList();
     List<Playlist> playlistList = new ArrayList();
+    
     PlaylistDBDAO pldb = new PlaylistDBDAO();
+    SongDBDAO sdb = new SongDBDAO();
+    GenreDBDAO gdb = new GenreDBDAO();
 
     public BllManager() {
-        
+        init();
+    }
+    
+    public void init(){
+        genreList = gdb.loadGenres();
+        songList = sdb.getAllSongs();
         playlistList = pldb.getAllPlaylists();
-        
+    }
+    
+    public void reloadGenre(){
+        genreList = gdb.loadGenres();
+    }
+    
+    public void reloadPlaylists(){
+        playlistList = pldb.getAllPlaylists();
     }
 }
