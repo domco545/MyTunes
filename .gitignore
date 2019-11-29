@@ -33,4 +33,4 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
-**/src/icons
+**/src/icons/*.png
