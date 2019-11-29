@@ -52,7 +52,7 @@ public class Song {
 
     @Override
     public String toString() {
-        return title + " " +  artist + " " + genre + " " + time + " " + path;
+        return title + " " +  artist + " " + genre + " " + time;
     }
     
    

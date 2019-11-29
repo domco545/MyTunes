@@ -92,39 +92,12 @@ public class AppController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         lstSOP.setItems(obsSongs);
        
-        //ObservableList<Song> tableViewRows = generateTableViewRows();
-        //lstSongs.getItems().setAll(tableViewRows);
+        ClTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+        ClArtist.setCellValueFactory(new PropertyValueFactory<>("artist"));
+        ClCategory.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        ClTime.setCellValueFactory(new PropertyValueFactory<>("time"));
         
-        //ClTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
-        
-        lstSongs.getColumns().add(ClTitle);
-        lstSongs.getColumns().add(ClArtist);
-        lstSongs.getColumns().add(ClCategory);
-        lstSongs.getColumns().add(ClTime);
-        
-        lstSongs.setItems(obsSongs);
-       
-        /*TableView<Song> showsongs = new TableView();
-        System.out.println(obsSongs);
-        showsongs.setItems(obsSongs);*/
-        
-        
-    }
-     public ObservableList<Song> generateTableViewRows() {
-        
-        ObservableList<Song> tableViewRows = FXCollections.observableArrayList();
-            for (Song row : tableViewRows) {
-                int id = row.getId();
-                String title = row.getTitle();
-                String artist= row.getArtist();
-                int category = row.getGenre();
-                int time = row.getTime();
-                String path = row.getPath();
-            tableViewRows.setAll(row);    
-            }
-            
-            return tableViewRows;
-        }
-        
+        lstSongs.setItems(obsSongs);     
+    }   
     }
     
