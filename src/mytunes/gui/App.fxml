@@ -119,7 +119,7 @@
             <ListView fx:id="lstSOP" layoutX="330.0" layoutY="180.0" prefHeight="371.0" prefWidth="200.0" />
             <TableView fx:id="lstSongs" layoutX="580.0" layoutY="180.0" prefHeight="371.0" prefWidth="301.0">
                <columns>
-                  <TableColumn prefWidth="75.0" text="Title" />
+                  <TableColumn fx:id="ClTitle" prefWidth="75.0" text="Title" />
                   <TableColumn prefWidth="75.0" text="Artist" />
                   <TableColumn prefWidth="75.0" text="Category" />
                   <TableColumn prefWidth="75.0" text="Time" />

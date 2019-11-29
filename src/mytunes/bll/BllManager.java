@@ -21,7 +21,7 @@ import mytunes.dal.SongDBDAO;
  */
 public class BllManager {
     List<Genre> genreList = new ArrayList();
-    List<Song> songList = new ArrayList();
+    
     List<Playlist> playlistList = new ArrayList();
     
     PlaylistDBDAO pldb = new PlaylistDBDAO();
@@ -34,7 +34,7 @@ public class BllManager {
     
     public void init(){
         genreList = gdb.loadGenres();
-        songList = sdb.getAllSongs();
+        //songList = sdb.getAllSongs();
         playlistList = pldb.getAllPlaylists();
     }
     
@@ -47,6 +47,8 @@ public class BllManager {
     }
     
     public List<Song> getAllSongs(){
+        List<Song> songList = new ArrayList();
+        songList = sdb.getAllSongs();
         return songList;
     }
     

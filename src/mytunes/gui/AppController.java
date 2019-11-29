@@ -6,6 +6,8 @@
 package mytunes.gui;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,8 +17,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import mytunes.be.Playlist;
 import mytunes.be.Song;
@@ -31,6 +35,7 @@ public class AppController implements Initializable {
     private ObservableList<Song> obsSongs = FXCollections.observableArrayList(bll.getAllSongs());
     private ObservableList<Playlist> obsPlaylists = FXCollections.observableArrayList(bll.getAllPlaylists());
     private ObservableList<Song> obsSOP = FXCollections.observableArrayList();
+   
     
     @FXML
     private ImageView btnPlay;
@@ -74,11 +79,40 @@ public class AppController implements Initializable {
     private ImageView btnAddToPL;
     @FXML
     private Label lblIsPlaying;
+    @FXML
+    private TableColumn<String, Song> ClTitle;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         lstSOP.setItems(obsSongs);
+       
+        ObservableList<Song> tableViewRows = generateTableViewRows();
+        lstSongs.getItems().setAll(tableViewRows);
+        
+        ClTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+        
+       
+        /*TableView<Song> showsongs = new TableView();
+        System.out.println(obsSongs);
+        showsongs.setItems(obsSongs);*/
+        
+        
     }
-
+     public ObservableList<Song> generateTableViewRows() {
+        
+        ObservableList<Song> tableViewRows = FXCollections.observableArrayList();
+            for (Song row : tableViewRows) {
+                int id = row.getId();
+                String title = row.getTitle();
+                String artist= row.getArtist();
+                int category = row.getGenre();
+                int time = row.getTime();
+                String path = row.getPath();
+            tableViewRows.setAll(row);    
+            }
+            
+            return tableViewRows;
+        }
+        
+    }
     
-}
