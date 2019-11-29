@@ -97,25 +97,7 @@ public class AppController implements Initializable {
         ClCategory.setCellValueFactory(new PropertyValueFactory<>("genre"));
         ClTime.setCellValueFactory(new PropertyValueFactory<>("time"));
         
-        lstSongs.setItems(obsSongs);
-        
-        
-    }
-     public ObservableList<Song> generateTableViewRows() {
-        
-        ObservableList<Song> tableViewRows = FXCollections.observableArrayList();
-            for (Song row : tableViewRows) {
-                int id = row.getId();
-                String title = row.getTitle();
-                String artist= row.getArtist();
-                int category = row.getGenre();
-                int time = row.getTime();
-                String path = row.getPath();
-            tableViewRows.setAll(row);    
-            }
-            
-            return tableViewRows;
-        }
-        
+        lstSongs.setItems(obsSongs);     
+    }   
     }
     
