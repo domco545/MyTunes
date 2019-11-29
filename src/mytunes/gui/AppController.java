@@ -80,17 +80,29 @@ public class AppController implements Initializable {
     @FXML
     private Label lblIsPlaying;
     @FXML
-    private TableColumn<String, Song> ClTitle;
+    private TableColumn<Song,String> ClTitle;
+    @FXML
+    private TableColumn<Song, String> ClArtist;
+    @FXML
+    private TableColumn<Song,Integer> ClCategory;
+    @FXML
+    private TableColumn<Song, Integer> ClTime;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         lstSOP.setItems(obsSongs);
        
-        ObservableList<Song> tableViewRows = generateTableViewRows();
-        lstSongs.getItems().setAll(tableViewRows);
+        //ObservableList<Song> tableViewRows = generateTableViewRows();
+        //lstSongs.getItems().setAll(tableViewRows);
         
-        ClTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+        //ClTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         
+        lstSongs.getColumns().add(ClTitle);
+        lstSongs.getColumns().add(ClArtist);
+        lstSongs.getColumns().add(ClCategory);
+        lstSongs.getColumns().add(ClTime);
+        
+        lstSongs.setItems(obsSongs);
        
         /*TableView<Song> showsongs = new TableView();
         System.out.println(obsSongs);

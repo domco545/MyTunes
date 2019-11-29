@@ -120,9 +120,9 @@
             <TableView fx:id="lstSongs" layoutX="580.0" layoutY="180.0" prefHeight="371.0" prefWidth="301.0">
                <columns>
                   <TableColumn fx:id="ClTitle" prefWidth="75.0" text="Title" />
-                  <TableColumn prefWidth="75.0" text="Artist" />
-                  <TableColumn prefWidth="75.0" text="Category" />
-                  <TableColumn prefWidth="75.0" text="Time" />
+                  <TableColumn fx:id="ClArtist" prefWidth="75.0" text="Artist" />
+                  <TableColumn fx:id="ClCategory" prefWidth="75.0" text="Category" />
+                  <TableColumn fx:id="ClTime" prefWidth="75.0" text="Time" />
                </columns>
             </TableView>
             <Text layoutX="638.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filter: ">
