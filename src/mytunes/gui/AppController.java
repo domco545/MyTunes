@@ -92,21 +92,12 @@ public class AppController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         lstSOP.setItems(obsSongs);
        
-        //ObservableList<Song> tableViewRows = generateTableViewRows();
-        //lstSongs.getItems().setAll(tableViewRows);
-        
-        //ClTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
-        
-        lstSongs.getColumns().add(ClTitle);
-        lstSongs.getColumns().add(ClArtist);
-        lstSongs.getColumns().add(ClCategory);
-        lstSongs.getColumns().add(ClTime);
+        ClTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+        ClArtist.setCellValueFactory(new PropertyValueFactory<>("artist"));
+        ClCategory.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        ClTime.setCellValueFactory(new PropertyValueFactory<>("time"));
         
         lstSongs.setItems(obsSongs);
-       
-        /*TableView<Song> showsongs = new TableView();
-        System.out.println(obsSongs);
-        showsongs.setItems(obsSongs);*/
         
         
     }
