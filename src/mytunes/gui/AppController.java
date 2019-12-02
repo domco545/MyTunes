@@ -39,6 +39,7 @@ import mytunes.be.Playlist;
 import mytunes.be.Song;
 import mytunes.bll.BllManager;
 
+
 /**
  *
  * @author domin
@@ -129,19 +130,15 @@ public class AppController implements Initializable {
     }   
 
     @FXML
-    private void newPlaylist(ActionEvent event) {
-         Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getClassLoader().getResource("C:\\Users\\narma\\Documents\\NetBeansProjects\\MyTunes\\src\\mytunes\\gui\\NewPlaylist.fxml"));
+    private void newPlaylist(ActionEvent event){
+        Parent root;
+        try{
+            root = FXMLLoader.load(getClass().getResource("NewPlaylist.fxml"));
             Stage stage = new Stage();
-            stage.setTitle("New/Edit Playlist");
-            stage.setScene(new Scene(root));
+            stage.setTitle("New Playlist");
+            stage.setScene(new Scene(root, 250,250));
             stage.show();
-            
-        } catch (IOException ex) {
-            Logger.getLogger(AppController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        }catch(IOException e){e.printStackTrace();}
     }
 
     @FXML
