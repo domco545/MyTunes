@@ -40,7 +40,7 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="940.0" VBox.vgrow="ALWAYS">
+    <AnchorPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="940.0" VBox.vgrow="ALWAYS">
          <children>
             <Button fx:id="btnNewPlst" layoutX="58.0" layoutY="562.0" mnemonicParsing="false" onAction="#newPlaylist" text="New...">
                <font>
