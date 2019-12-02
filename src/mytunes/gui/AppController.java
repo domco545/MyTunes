@@ -14,6 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -24,6 +25,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import mytunes.be.Playlist;
 import mytunes.be.Song;
 import mytunes.bll.BllManager;
@@ -38,7 +41,8 @@ public class AppController implements Initializable {
     private ObservableList<Playlist> obsPlaylists = FXCollections.observableArrayList(bll.getAllPlaylists());
     private ObservableList<Song> obsSOP = FXCollections.observableArrayList();
    
-    
+    Stage window;
+    Scene scene1;
     @FXML
     private Button btnPlay;
     @FXML
@@ -99,11 +103,11 @@ public class AppController implements Initializable {
     private Button btnPrevious;
     @FXML
     private Button btnNext;
-    @FXML
-    private AnchorPane window;
+    
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+       
         lstSOP.setItems(obsSongs);
        
         ClTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
@@ -140,7 +144,10 @@ public class AppController implements Initializable {
 
     @FXML
     private void newSong(ActionEvent event) {
-        
+        VBox layout1= new VBox(20);
+        scene1=new Scene(layout1,200,200);
+        window.setScene(scene1);
+        window.show();
     }
 
     @FXML
