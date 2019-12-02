@@ -52,8 +52,7 @@ private ObservableList<Playlist> obsPlaylists = FXCollections.observableArrayLis
         bll.createPlaylist(txtNewPlaylist.getText());
         
         
-         Platform.exit();
-         System.exit(0); 
+         
     }
     
 }

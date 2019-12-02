@@ -159,11 +159,7 @@ public class AppController implements Initializable {
 
     @FXML
     private void newSong(ActionEvent event) {
-        VBox layout1= new VBox();
-       
-        scene1=new Scene(layout1);
-        window.setScene(scene1);
-        window.show();
+        
     }
 
     @FXML
