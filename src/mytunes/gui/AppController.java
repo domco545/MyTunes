@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,6 +24,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import mytunes.be.Playlist;
 import mytunes.be.Song;
@@ -36,7 +39,7 @@ public class AppController implements Initializable {
     BllManager bll = new BllManager();
     private ObservableList<Song> obsSongs = FXCollections.observableArrayList(bll.getAllSongs());
     private ObservableList<Playlist> obsPlaylists = FXCollections.observableArrayList(bll.getAllPlaylists());
-    private ObservableList<Song> obsSOP = FXCollections.observableArrayList();
+    private ObservableList<Song> obsSOP; 
    
     
     @FXML
@@ -104,7 +107,6 @@ public class AppController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        lstSOP.setItems(obsSongs);
        
         ClTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         ClArtist.setCellValueFactory(new PropertyValueFactory<>("artist"));
@@ -153,8 +155,8 @@ public class AppController implements Initializable {
 
     @FXML
     private void closeWindow(ActionEvent event) {
-      
-        
+        Platform.exit();
+        System.exit(0);  
     }
 
     @FXML
@@ -180,5 +182,21 @@ public class AppController implements Initializable {
     @FXML
     private void moveSongToPlaylist(ActionEvent event) {
     }
+
+    @FXML
+    private void fiilSOPm(MouseEvent event) {
+        Playlist pl = lstPlaylists.getSelectionModel().getSelectedItem();
+        obsSOP= FXCollections.observableArrayList(pl.getAllSongsOnPlaylist());
+        lstSOP.setItems(obsSOP);
+    }
+
+    @FXML
+    private void fiilSOPk(KeyEvent event) {
+        Playlist pl = lstPlaylists.getSelectionModel().getSelectedItem();
+        obsSOP= FXCollections.observableArrayList(pl.getAllSongsOnPlaylist());
+        lstSOP.setItems(obsSOP);
+    }
+
+
     }
     

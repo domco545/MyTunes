@@ -109,7 +109,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <TableView fx:id="lstPlaylists" layoutX="58.0" layoutY="180.0" prefHeight="371.0" prefWidth="227.0">
+            <TableView fx:id="lstPlaylists" layoutX="58.0" layoutY="180.0" onKeyPressed="#fiilSOPk" onMouseClicked="#fiilSOPm" prefHeight="371.0" prefWidth="227.0">
               <columns>
                 <TableColumn fx:id="ClName" prefWidth="75.0" text="Name" />
                 <TableColumn fx:id="ClSongs" prefWidth="75.0" text="Songs" />
