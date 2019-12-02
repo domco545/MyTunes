@@ -5,6 +5,7 @@
  */
 package mytunes.gui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -33,6 +36,7 @@ import javafx.stage.Stage;
 import mytunes.be.Playlist;
 import mytunes.be.Song;
 import mytunes.bll.BllManager;
+
 
 /**
  *
@@ -124,7 +128,15 @@ public class AppController implements Initializable {
     }   
 
     @FXML
-    private void newPlaylist(ActionEvent event) {
+    private void newPlaylist(ActionEvent event){
+        Parent root;
+        try{
+            root = FXMLLoader.load(getClass().getResource("NewPlaylist.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("New Playlist");
+            stage.setScene(new Scene(root, 250,250));
+            stage.show();
+        }catch(IOException e){e.printStackTrace();}
     }
 
     @FXML
