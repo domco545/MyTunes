@@ -38,7 +38,7 @@ public class AppController implements Initializable {
    
     
     @FXML
-    private ImageView btnPlay;
+    private Button btnPlay;
     @FXML
     private Button btnNewPlst;
     @FXML
@@ -68,8 +68,6 @@ public class AppController implements Initializable {
     @FXML
     private ImageView btnFind;
     @FXML
-    private Button btnMoveBack;
-    @FXML
     private ImageView btnPreviousSong;
     @FXML
     private ImageView btnNextSong;
@@ -93,6 +91,12 @@ public class AppController implements Initializable {
     private TableColumn<Playlist,Integer> ClSongs;
     @FXML
     private TableColumn<Playlist,Integer> ClPTime;
+    @FXML
+    private Button filter;
+    @FXML
+    private Button btnPrevious;
+    @FXML
+    private Button btnNext;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -109,5 +113,65 @@ public class AppController implements Initializable {
         ClPTime.setCellValueFactory(new PropertyValueFactory<>("time"));
         lstPlaylists.setItems(obsPlaylists);
     }   
+
+    @FXML
+    private void newPlaylist(ActionEvent event) {
+    }
+
+    @FXML
+    private void deleteSongOnPlaylist(ActionEvent event) {
+    }
+
+    @FXML
+    private void deletePlaylist(ActionEvent event) {
+    }
+
+    @FXML
+    private void editPlaylist(ActionEvent event) {
+    }
+
+    @FXML
+    private void moveSongUp(ActionEvent event) {
+    }
+
+    @FXML
+    private void newSong(ActionEvent event) {
+    }
+
+    @FXML
+    private void deleteSong(ActionEvent event) {
+    }
+
+    @FXML
+    private void editSong(ActionEvent event) {
+    }
+
+    @FXML
+    private void closeWindow(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleFilter(ActionEvent event) {
+    }
+
+    @FXML
+    private void previousSong(ActionEvent event) {
+    }
+
+    @FXML
+    private void playSong(ActionEvent event) {
+    }
+
+    @FXML
+    private void nextSong(ActionEvent event) {
+    }
+
+    @FXML
+    private void moveSongDown(ActionEvent event) {
+    }
+
+    @FXML
+    private void moveSongToPlaylist(ActionEvent event) {
+    }
     }
     
