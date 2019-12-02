@@ -33,7 +33,7 @@ private SQLServerDataSource ds;
     {
        try(Connection con = ds.getConnection())
        {
-           String sql="insert into Playlist set (name) values (?)";
+           String sql="INSERT INTO Playlist (name) values (?)";
            PreparedStatement p=con.prepareStatement(sql);
            p.setString(1,name);
            p.executeUpdate();

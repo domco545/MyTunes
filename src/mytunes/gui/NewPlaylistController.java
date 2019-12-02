@@ -13,8 +13,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import mytunes.be.Playlist;
 import mytunes.bll.BllManager;
 
@@ -43,16 +45,14 @@ private ObservableList<Playlist> obsPlaylists = FXCollections.observableArrayLis
 
     @FXML
     private void cancel(ActionEvent event) {
-          
+        ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
     @FXML
     private void save(ActionEvent event) {
         if(txtNewPlaylist!=null)
         bll.createPlaylist(txtNewPlaylist.getText());
-        
-        
-         
+        cancel(event);   
     }
     
 }
