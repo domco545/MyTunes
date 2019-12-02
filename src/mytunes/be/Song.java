@@ -13,7 +13,7 @@ public class Song {
     private int id;
     private String title;
     private String artist;
-    private int genre;
+    private Genre genre;
     private int time;
     private String path;
 
@@ -25,8 +25,8 @@ public class Song {
         return artist;
     }
 
-    public int getGenre() {
-        return genre;
+    public String getGenre() {
+        return genre.getName();
     }
 
     public int getTime() {
@@ -40,8 +40,12 @@ public class Song {
     public int getId() {
         return id;
     }
+    
+    public int getGenreId(){
+        return genre.getId();
+    }
 
-    public Song(int id,String title, String artist, int genre, int time, String path) {
+    public Song(int id,String title, String artist, Genre genre, int time, String path) {
         this.id = id;
         this.title = title;
         this.artist = artist;
@@ -52,7 +56,7 @@ public class Song {
 
     @Override
     public String toString() {
-        return title + " " +  artist + " " + genre + " " + time;
+        return title + " " +  artist + " " + genre.getName() + " " + time;
     }
     
    

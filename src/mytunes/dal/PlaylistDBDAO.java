@@ -11,6 +11,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import mytunes.be.Genre;
 import mytunes.be.Playlist;
 import mytunes.be.Song;
 /**
@@ -79,16 +80,17 @@ private SQLServerDataSource ds;
                 List<Song> songs = new ArrayList();
                 int id = playlist.getId();
                 
-            String sql ="SELECT Songs_On_Playlist.song_id, Songs.title, Songs.artist, Songs.genre_id, Songs.[time], Songs.[path]\n" +
+            String sql ="SELECT Songs_On_Playlist.song_id, Songs.title, Songs.artist, Songs.genre_id, Songs.[time], Songs.[path], Genre.id AS genre_table_id, Genre.name\n" +
                         "FROM Songs_On_Playlist\n" +
                         "LEFT JOIN Songs ON Songs_On_Playlist.song_id = Songs.id\n" +
+                        "LEFT JOIN Genre ON Songs.genre_id = Genre.id\n" +
                         "Where Songs_On_Playlist.playlist_id=?";
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             
             while(rs.next()){
-                songs.add(new Song(rs.getInt("song_id"), rs.getString("title"), rs.getString("artist"), rs.getInt("genre_id"), rs.getInt("time"), rs.getString("path")));
+                songs.add(new Song(rs.getInt("song_id"), rs.getString("title"), rs.getString("artist"), new Genre(rs.getInt("genre_table_id"),rs.getString("name")), rs.getInt("time"), rs.getString("path")));
             }
              playlist.addSongs(songs); 
              

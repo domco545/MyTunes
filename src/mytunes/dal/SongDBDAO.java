@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import mytunes.be.Genre;
 import mytunes.be.Song;
 
 /**
@@ -37,7 +38,10 @@ public class SongDBDAO {
    public List<Song> getAllSongs()
    {
        try(Connection con=ds.getConnection()){
-           String sql="select * from Songs";
+           String sql="SELECT Songs.id, Songs.title, Songs.artist, Songs.genre_id, Songs.[time], Songs.[path], Genre.id AS genre_table_id, Genre.name\n" +
+                      "FROM Songs\n" +
+                      "LEFT JOIN Genre ON Songs.genre_id = Genre.id";
+                        
          Statement s= con.createStatement();
          List<Song> songs = new ArrayList();
        
@@ -47,7 +51,7 @@ public class SongDBDAO {
              int id = r.getInt("id");
              String title=r.getString("title");
              String artist=r.getString("artist");
-             int genre = r.getInt("genre_id");
+             Genre genre = new Genre(r.getInt("genre_table_id"),r.getString("name"));
              int time=r.getInt("time");
              String path=r.getString("path");
              
@@ -63,20 +67,7 @@ public class SongDBDAO {
         }
         return null;
    }
-  /* private int getNextAvailableId() {
-         try(Connection con=ds.getConnection()){
-         String sql="select top (1) id from Songs order by id desc";
-         Statement s= con.createStatement();
-        ResultSet r = s.executeQuery(sql);
-        if(r.next())
-         { return r.getInt("id")+1; }
-         } catch (SQLServerException ex) {
-            Logger.getLogger(SongDBDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(SongDBDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    return -1;
-    }*/
+
    public void createSong(String title,String artist,int genre,int time,String path)
    {
      
@@ -109,7 +100,7 @@ public class SongDBDAO {
            
            p.setString(1,song.getTitle());
            p.setString(2, song.getArtist());
-           p.setInt(3, song.getGenre());
+           p.setInt(3, song.getGenreId());
            p.setInt(4,song.getTime());
            p.setString(5,song.getPath());
            p.setInt(6,song.getId());
