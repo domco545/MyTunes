@@ -24,6 +24,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -144,8 +145,9 @@ public class AppController implements Initializable {
 
     @FXML
     private void newSong(ActionEvent event) {
-        VBox layout1= new VBox(20);
-        scene1=new Scene(layout1,200,200);
+        VBox layout1= new VBox();
+       
+        scene1=new Scene(layout1);
         window.setScene(scene1);
         window.show();
     }
@@ -187,5 +189,6 @@ public class AppController implements Initializable {
     @FXML
     private void moveSongToPlaylist(ActionEvent event) {
     }
+
     }
     
