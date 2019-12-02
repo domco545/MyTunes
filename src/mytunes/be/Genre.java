@@ -30,7 +30,7 @@ public class Genre {
 
     @Override
     public String toString() {
-        return id +","+ name;
+        return name;
     }
     
 }

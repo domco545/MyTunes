@@ -26,7 +26,7 @@ public class Song {
     }
 
     public String getGenre() {
-        return genre.toString();
+        return genre.getName();
     }
 
     public int getTime() {
@@ -40,6 +40,10 @@ public class Song {
     public int getId() {
         return id;
     }
+    
+    public int getGenreId(){
+        return genre.getId();
+    }
 
     public Song(int id,String title, String artist, Genre genre, int time, String path) {
         this.id = id;
@@ -52,7 +56,7 @@ public class Song {
 
     @Override
     public String toString() {
-        return title + " " +  artist + " " + genre + " " + time;
+        return title + " " +  artist + " " + genre.getName() + " " + time;
     }
     
    
