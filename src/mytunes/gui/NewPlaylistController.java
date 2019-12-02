@@ -7,10 +7,16 @@ package mytunes.gui;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import mytunes.be.Playlist;
+import mytunes.bll.BllManager;
 
 /**
  * FXML Controller class
@@ -18,7 +24,8 @@ import javafx.scene.control.TextField;
  * @author narma
  */
 public class NewPlaylistController implements Initializable {
-
+    BllManager bll = new BllManager();
+private ObservableList<Playlist> obsPlaylists = FXCollections.observableArrayList(bll.getAllPlaylists());
     @FXML
     private TextField txtNewPlaylist;
     @FXML
@@ -33,5 +40,19 @@ public class NewPlaylistController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void cancel(ActionEvent event) {
+        Platform.exit();
+        System.exit(0);  
+    }
+
+    @FXML
+    private void save(ActionEvent event) {
+        
+        
+         Platform.exit();
+         System.exit(0); 
+    }
     
 }
