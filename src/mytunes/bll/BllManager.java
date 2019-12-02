@@ -55,4 +55,10 @@ public class BllManager {
     public List<Playlist> getAllPlaylists(){
         return playlistList;
     }
+    public void createPlaylist(String name)
+    {
+        pldb.createPlaylist(name);
+    
+    }
+    
 }
