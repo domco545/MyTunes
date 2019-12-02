@@ -88,11 +88,11 @@ public class AppController implements Initializable {
     @FXML
     private TableColumn<Song, Integer> ClTime;
     @FXML
-    private TableColumn<?, ?> ClName;
+    private TableColumn<Playlist, String> ClName;
     @FXML
-    private TableColumn<?, ?> ClSongs;
+    private TableColumn<Playlist,Integer> ClSongs;
     @FXML
-    private TableColumn<?, ?> ClPTime;
+    private TableColumn<Playlist,Integer> ClPTime;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -102,8 +102,12 @@ public class AppController implements Initializable {
         ClArtist.setCellValueFactory(new PropertyValueFactory<>("artist"));
         ClCategory.setCellValueFactory(new PropertyValueFactory<>("genre"));
         ClTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+        lstSongs.setItems(obsSongs);  
         
-        lstSongs.setItems(obsSongs);     
+        ClName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        ClSongs.setCellValueFactory(new PropertyValueFactory<>("songs"));
+        ClPTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+        lstPlaylists.setItems(obsPlaylists);
     }   
     }
     
