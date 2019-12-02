@@ -111,9 +111,9 @@
             </Text>
             <TableView fx:id="lstPlaylists" layoutX="58.0" layoutY="180.0" prefHeight="371.0" prefWidth="227.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Name" />
-                <TableColumn prefWidth="75.0" text="Songs" />
-                  <TableColumn prefWidth="75.0" text="Time" />
+                <TableColumn fx:id="ClName" prefWidth="75.0" text="Name" />
+                <TableColumn fx:id="ClSongs" prefWidth="75.0" text="Songs" />
+                  <TableColumn fx:id="ClPTime" prefWidth="75.0" text="Time" />
               </columns>
             </TableView>
             <ListView fx:id="lstSOP" layoutX="330.0" layoutY="180.0" prefHeight="371.0" prefWidth="200.0" />

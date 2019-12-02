@@ -87,6 +87,12 @@ public class AppController implements Initializable {
     private TableColumn<Song,Integer> ClCategory;
     @FXML
     private TableColumn<Song, Integer> ClTime;
+    @FXML
+    private TableColumn<?, ?> ClName;
+    @FXML
+    private TableColumn<?, ?> ClSongs;
+    @FXML
+    private TableColumn<?, ?> ClPTime;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
