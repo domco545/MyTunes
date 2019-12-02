@@ -7,7 +7,10 @@ package mytunes.gui;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -15,6 +18,13 @@ import javafx.fxml.Initializable;
  * @author narma
  */
 public class NewPlaylistController implements Initializable {
+
+    @FXML
+    private TextField txtNewPlaylist;
+    @FXML
+    private Button cancelNewPlaylist;
+    @FXML
+    private Button saveNewPlaylist;
 
     /**
      * Initializes the controller class.
