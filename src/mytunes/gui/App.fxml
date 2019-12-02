@@ -40,29 +40,29 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="940.0" VBox.vgrow="ALWAYS">
+    <AnchorPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="940.0" VBox.vgrow="ALWAYS">
          <children>
-            <Button fx:id="btnNewPlst" layoutX="58.0" layoutY="562.0" mnemonicParsing="false" text="New...">
+            <Button fx:id="btnNewPlst" layoutX="58.0" layoutY="562.0" mnemonicParsing="false" onAction="#newPlaylist" text="New...">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnDeleteSOP" layoutX="470.0" layoutY="561.0" mnemonicParsing="false" text="Delete">
+            <Button fx:id="btnDeleteSOP" layoutX="470.0" layoutY="561.0" mnemonicParsing="false" onAction="#deleteSongOnPlaylist" text="Delete">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnDeletePlst" layoutX="225.0" layoutY="563.0" mnemonicParsing="false" text="Delete">
+            <Button fx:id="btnDeletePlst" layoutX="225.0" layoutY="563.0" mnemonicParsing="false" onAction="#deletePlaylist" text="Delete">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnEditPlst" layoutX="145.0" layoutY="562.0" mnemonicParsing="false" text="Edit...">
+            <Button fx:id="btnEditPlst" layoutX="145.0" layoutY="562.0" mnemonicParsing="false" onAction="#editPlaylist" text="Edit...">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnMoveUp" layoutX="330.0" layoutY="560.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="38.0">
+            <Button fx:id="btnMoveUp" layoutX="330.0" layoutY="560.0" mnemonicParsing="false" onAction="#moveSongUp" prefHeight="25.0" prefWidth="38.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -74,22 +74,22 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnNewSongs" layoutX="580.0" layoutY="562.0" mnemonicParsing="false" text="New...">
+            <Button fx:id="btnNewSongs" layoutX="580.0" layoutY="562.0" mnemonicParsing="false" onAction="#newSong" text="New...">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnDeleteSongs" layoutX="708.0" layoutY="562.0" mnemonicParsing="false" text="Delete">
+            <Button fx:id="btnDeleteSongs" layoutX="708.0" layoutY="562.0" mnemonicParsing="false" onAction="#deleteSong" text="Delete">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnEditSongs" layoutX="646.0" layoutY="562.0" mnemonicParsing="false" text="Edit...">
+            <Button fx:id="btnEditSongs" layoutX="646.0" layoutY="562.0" mnemonicParsing="false" onAction="#editSong" text="Edit...">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnClose" layoutX="815.0" layoutY="561.0" mnemonicParsing="false" text="Close">
+            <Button fx:id="btnClose" layoutX="815.0" layoutY="561.0" mnemonicParsing="false" onAction="#closeWindow" text="Close">
                <font>
                   <Font size="14.0" />
                </font>
@@ -131,7 +131,7 @@
                </font>
             </Text>
             <TextField fx:id="txtInput" layoutX="683.0" layoutY="47.0" prefHeight="25.0" prefWidth="139.0" />
-            <Button layoutX="829.0" layoutY="42.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="36.0">
+            <Button fx:id="filter" layoutX="829.0" layoutY="42.0" mnemonicParsing="false" onAction="#handleFilter" prefHeight="25.0" prefWidth="36.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -144,7 +144,7 @@
                </graphic>
             </Button>
             <Slider layoutX="60.0" layoutY="115.0" prefHeight="14.0" prefWidth="173.0" />
-            <Button fx:id="btnMoveBack" layoutX="58.0" layoutY="57.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="0.0" style="-fx-background-radius: 100;;">
+            <Button fx:id="btnPrevious" layoutX="58.0" layoutY="57.0" mnemonicParsing="false" onAction="#previousSong" prefHeight="47.0" prefWidth="0.0" style="-fx-background-radius: 100;;">
                <graphic>
                   <ImageView fx:id="btnPreviousSong" fitHeight="39.0" fitWidth="39.0">
                      <image>
@@ -153,16 +153,16 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="120.0" layoutY="44.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-radius: 100;;">
+            <Button fx:id="btnPlay" layoutX="120.0" layoutY="44.0" mnemonicParsing="false" onAction="#playSong" prefHeight="60.0" prefWidth="60.0" style="-fx-background-radius: 100;;">
                <graphic>
-                  <ImageView fx:id="btnPlay" fitHeight="40.0" fitWidth="44.0">
+                  <ImageView fitHeight="40.0" fitWidth="44.0">
                      <image>
                         <Image url="@../../icons/button1.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="187.0" layoutY="57.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" style="-fx-background-radius: 100;;">
+            <Button fx:id="btnNext" layoutX="187.0" layoutY="57.0" mnemonicParsing="false" onAction="#nextSong" prefHeight="30.0" prefWidth="38.0" style="-fx-background-radius: 100;;">
                <graphic>
                   <ImageView fx:id="btnNextSong" fitHeight="39.0" fitWidth="39.0">
                      <image>
@@ -171,7 +171,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="378.0" layoutY="560.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="38.0">
+            <Button layoutX="378.0" layoutY="560.0" mnemonicParsing="false" onAction="#moveSongDown" prefHeight="25.0" prefWidth="38.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -183,7 +183,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="535.0" layoutY="211.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="38.0">
+            <Button layoutX="535.0" layoutY="211.0" mnemonicParsing="false" onAction="#moveSongToPlaylist" prefHeight="25.0" prefWidth="38.0">
                <font>
                   <Font size="14.0" />
                </font>
