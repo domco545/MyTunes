@@ -135,6 +135,7 @@ public class AppController implements Initializable {
         try{
             root = FXMLLoader.load(getClass().getResource("NewPlaylist.fxml"));
             Stage stage = new Stage();
+           
             stage.setTitle("New Playlist");
             stage.setScene(new Scene(root, 350,250));
             stage.show();

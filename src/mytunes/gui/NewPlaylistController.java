@@ -25,6 +25,9 @@ import mytunes.bll.BllManager;
  */
 public class NewPlaylistController implements Initializable {
     BllManager bll = new BllManager();
+
+    
+    
 private ObservableList<Playlist> obsPlaylists = FXCollections.observableArrayList(bll.getAllPlaylists());
     @FXML
     private TextField txtNewPlaylist;
@@ -43,7 +46,7 @@ private ObservableList<Playlist> obsPlaylists = FXCollections.observableArrayLis
 
     @FXML
     private void cancel(ActionEvent event) {
-          
+         
     }
 
     @FXML
