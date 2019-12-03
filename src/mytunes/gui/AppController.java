@@ -50,7 +50,7 @@ import mytunes.bll.BllManager;
 public class AppController implements Initializable {
     BllManager bll = new BllManager();
     private BllFacade bllfacade = new BllManager();
-    private ObservableList<Song> obsSongs = FXCollections.observableArrayList(bll.getAllSongs());
+    private ObservableList<Song> obsSongs = FXCollections.observableArrayList(bllfacade.getAllSongs());
     private ObservableList<Playlist> obsPlaylists = FXCollections.observableArrayList(bll.getAllPlaylists());
     private ObservableList<Song> obsSOP; 
    
@@ -229,7 +229,7 @@ public class AppController implements Initializable {
 
     @FXML
     private void moveSongToPlaylist(ActionEvent event) {
-        bll.addSongToPlaylist(selectedPlaylistId, selectedSongId);
+        bllfacade.addSongToPlaylist(selectedPlaylistId, selectedSongId);
         bll.reloadPlaylists();
         init();
     }
@@ -249,8 +249,8 @@ public class AppController implements Initializable {
     }
     
     public void init(){
-        obsSongs = FXCollections.observableArrayList(bll.getAllSongs());
-        obsPlaylists = FXCollections.observableArrayList(bll.getAllPlaylists());
+        obsSongs = FXCollections.observableArrayList(bllfacade.getAllSongs());
+        obsPlaylists = FXCollections.observableArrayList(bllfacade.getAllPlaylists());
         
                
         ClTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
