@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import mytunes.be.Playlist;
 import mytunes.bll.BllFacade;
 import mytunes.bll.BllManager;
 
@@ -23,12 +24,18 @@ import mytunes.bll.BllManager;
  */
 public class EditPlaylistController implements Initializable {
 private BllFacade bllfacade = new BllManager();
+Playlist playlist;
     @FXML
     private TextField txtNewPlaylist;
     @FXML
     private Button cancelEditPlaylist;
     @FXML
     private Button saveEditPlaylist;
+
+    public void acceptPlaylist(Playlist playlist){
+        this.playlist = playlist;
+        txtNewPlaylist.setText(playlist.getName());
+    }
 
     /**
      * Initializes the controller class.
@@ -46,7 +53,8 @@ private BllFacade bllfacade = new BllManager();
     @FXML
     private void update(ActionEvent event) {
         if(txtNewPlaylist!=null)
-        bllfacade.updatePlaylist(txtNewPlaylist.getText());       
+            playlist.setName(txtNewPlaylist.getText());
+            bllfacade.updatePlaylist(playlist);       
         cancel(event);   
     }
     
