@@ -47,6 +47,22 @@ private SQLServerDataSource ds;
     
     }
  
+    public void updatePlaylist(Playlist playlist)
+    {
+        try(Connection con = ds.getConnection())
+        {
+            String sql="UPDATE Playlist SET name=? WHERE id=?";
+            PreparedStatement p = con.prepareStatement(sql);
+            p.setString(1,playlist.getName());
+            p.setInt(2, playlist.getId());
+            p.executeUpdate();
+            
+        } catch (SQLServerException ex) {
+        Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (SQLException ex) {
+        Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }
     public List<Playlist> loadPlaylists(){
         try(Connection con = ds.getConnection()){
             List<Playlist> pl = new ArrayList();

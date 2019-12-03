@@ -87,6 +87,11 @@ public class BllManager implements BllFacade {
     public List<Genre> loadGenres() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void updatePlaylist(Playlist playlist) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
  

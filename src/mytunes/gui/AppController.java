@@ -128,7 +128,7 @@ public class AppController implements Initializable {
             root = FXMLLoader.load(getClass().getResource("NewPlaylist.fxml"));
             Stage stage = new Stage();
            
-            stage.setTitle("New Playlist");
+            stage.setTitle("New/Edit Playlist");
             stage.setScene(new Scene(root, 350,250));
             stage.show();
             
@@ -145,6 +145,18 @@ public class AppController implements Initializable {
 
     @FXML
     private void editPlaylist(ActionEvent event) {
+        Parent root;
+        try{
+            root = FXMLLoader.load(getClass().getResource("NewPlaylist.fxml"));
+            Stage stage = new Stage();
+           
+            stage.setTitle("New/Edit Playlist");
+            stage.setScene(new Scene(root, 350,250));
+            stage.show();
+            
+            
+        }catch(IOException e){e.printStackTrace();}
+        
     }
 
     @FXML
@@ -199,6 +211,7 @@ public class AppController implements Initializable {
         Playlist pl = lstPlaylists.getSelectionModel().getSelectedItem();
         obsSOP= FXCollections.observableArrayList(pl.getAllSongsOnPlaylist());
         lstSOP.setItems(obsSOP);
+        
     }
 
     @FXML
