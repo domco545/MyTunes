@@ -63,6 +63,24 @@ private SQLServerDataSource ds;
         Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
     }
     }
+    public void deletePlaylist(Playlist playlist)
+    {
+        try(Connection con = ds.getConnection())
+        {
+            String sql = "DELETE FROM Playlist WHERE id=?";
+            PreparedStatement p = con.prepareStatement(sql);
+            p.setInt(1, playlist.getId());
+            p.executeUpdate();
+                
+        
+        } catch (SQLServerException ex) {
+        Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (SQLException ex) {
+        Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }
+    
+    
     public List<Playlist> loadPlaylists(){
         try(Connection con = ds.getConnection()){
             List<Playlist> pl = new ArrayList();

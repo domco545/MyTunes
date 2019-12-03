@@ -25,4 +25,5 @@ public interface BllFacade {
     public List<Playlist> getAllPlaylists();
     public List<Genre> loadGenres();
     public void updatePlaylist(Playlist playlist);
+    public void deletePlaylist(Playlist playlist);
 }

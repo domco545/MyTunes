@@ -91,6 +91,11 @@ public class BllManager implements BllFacade {
     public void updatePlaylist(Playlist playlist) {
         pldb.updatePlaylist(playlist);
     }
+
+    @Override
+    public void deletePlaylist(Playlist playlist) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
  
