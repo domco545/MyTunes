@@ -155,14 +155,19 @@ public class AppController implements Initializable {
     private void editPlaylist(ActionEvent event) {
         Parent root;
         try{
-            root = FXMLLoader.load(getClass().getResource("NewPlaylist.fxml"));
+            root = FXMLLoader.load(getClass().getResource("EditPlaylist.fxml"));
             Stage stage = new Stage();
            
-            stage.setTitle("New/Edit Playlist");
+            stage.setTitle("Edit Playlist");
             stage.setScene(new Scene(root, 350,250));
             stage.show();
-            
-            
+            stage.setOnHiding(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    bll.reloadPlaylists();
+                    init();
+                }
+            });
         }catch(IOException e){e.printStackTrace();}
         
     }
