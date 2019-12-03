@@ -58,7 +58,6 @@ public class BllManager {
     public void createPlaylist(String name)
     {
         pldb.createPlaylist(name);
-        reloadPlaylists();
     }
     
 }

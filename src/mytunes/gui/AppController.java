@@ -16,6 +16,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -35,6 +36,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import mytunes.be.Playlist;
 import mytunes.be.Song;
 import mytunes.bll.BllManager;
@@ -129,7 +131,13 @@ public class AppController implements Initializable {
             stage.setTitle("New Playlist");
             stage.setScene(new Scene(root, 350,250));
             stage.show();
-            
+            stage.setOnHiding(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    bll.reloadPlaylists();
+                    init();
+                }
+            });
         }catch(IOException e){e.printStackTrace();}
     }
 
@@ -178,6 +186,7 @@ public class AppController implements Initializable {
 
     @FXML
     private void playSong(ActionEvent event) {
+
     }
 
     @FXML
