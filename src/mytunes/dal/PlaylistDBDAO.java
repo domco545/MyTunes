@@ -29,7 +29,7 @@ private SQLServerDataSource ds;
         ds.setPortNumber(1433);
     }
     
- public void createPlaylist( String name)
+ public void createPlaylist(String name)
     {
        try(Connection con = ds.getConnection())
        {
