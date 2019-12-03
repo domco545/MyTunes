@@ -54,8 +54,9 @@ public class AppController implements Initializable {
     private ObservableList<Playlist> obsPlaylists = FXCollections.observableArrayList(bll.getAllPlaylists());
     private ObservableList<Song> obsSOP; 
    
-    Stage window;
-    Scene scene1;
+    private int selectedPlaylistId;
+    private int selectedSongId;
+    
     @FXML
     private Button btnPlay;
     @FXML
@@ -116,6 +117,8 @@ public class AppController implements Initializable {
     private Button btnPrevious;
     @FXML
     private Button btnNext;
+    @FXML
+    private Button addToPlaylist;
     
 
     @Override
@@ -226,20 +229,22 @@ public class AppController implements Initializable {
 
     @FXML
     private void moveSongToPlaylist(ActionEvent event) {
+        bll.addSongToPlaylist(selectedPlaylistId, selectedSongId);
+        bll.reloadPlaylists();
+        init();
     }
 
     @FXML
     private void fiilSOPm(MouseEvent event) {
-        Playlist pl = lstPlaylists.getSelectionModel().getSelectedItem();
-        obsSOP= FXCollections.observableArrayList(pl.getAllSongsOnPlaylist());
+        obsSOP= FXCollections.observableArrayList(lstPlaylists.getSelectionModel().getSelectedItem().getAllSongsOnPlaylist());
+        selectedPlaylistId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
         lstSOP.setItems(obsSOP);
-        
     }
 
     @FXML
     private void fiilSOPk(KeyEvent event) {
-        Playlist pl = lstPlaylists.getSelectionModel().getSelectedItem();
-        obsSOP= FXCollections.observableArrayList(pl.getAllSongsOnPlaylist());
+        obsSOP= FXCollections.observableArrayList(lstPlaylists.getSelectionModel().getSelectedItem().getAllSongsOnPlaylist());
+        selectedPlaylistId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
         lstSOP.setItems(obsSOP);
     }
     
@@ -260,6 +265,14 @@ public class AppController implements Initializable {
         lstPlaylists.setItems(obsPlaylists);
     }
 
-
+    @FXML
+    private void selectSongK(KeyEvent event) {
+        selectedSongId = lstSongs.getSelectionModel().getSelectedItem().getId();
     }
+
+    @FXML
+    private void selectSongM(MouseEvent event) {
+        selectedSongId = lstSongs.getSelectionModel().getSelectedItem().getId();
+    }
+}
     

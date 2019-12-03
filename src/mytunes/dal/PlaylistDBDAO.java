@@ -137,4 +137,19 @@ private SQLServerDataSource ds;
     }
         return null;
     }
+    
+    public void addSongToPlaylist(int plId, int sId){
+        try(Connection con = ds.getConnection())
+       {
+           String sql="INSERT INTO Songs_On_Playlist (playlist_id, song_id) values (?,?)";
+           PreparedStatement p=con.prepareStatement(sql);
+           p.setInt(1,plId);
+           p.setInt(2, sId);
+           p.executeUpdate();
+       } catch (SQLServerException ex) {
+        Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (SQLException ex) {
+        Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+    }    
+    }
 }

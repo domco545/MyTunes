@@ -117,7 +117,7 @@
               </columns>
             </TableView>
             <ListView fx:id="lstSOP" layoutX="330.0" layoutY="180.0" prefHeight="371.0" prefWidth="200.0" />
-            <TableView fx:id="lstSongs" layoutX="580.0" layoutY="180.0" prefHeight="371.0" prefWidth="301.0">
+            <TableView fx:id="lstSongs" layoutX="580.0" layoutY="180.0" onKeyPressed="#selectSongK" onMouseClicked="#selectSongM" prefHeight="371.0" prefWidth="301.0">
                <columns>
                   <TableColumn fx:id="ClTitle" prefWidth="75.0" text="Title" />
                   <TableColumn fx:id="ClArtist" prefWidth="75.0" text="Artist" />
@@ -183,7 +183,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="535.0" layoutY="211.0" mnemonicParsing="false" onAction="#moveSongToPlaylist" prefHeight="25.0" prefWidth="38.0">
+            <Button fx:id="addToPlaylist" layoutX="535.0" layoutY="211.0" mnemonicParsing="false" onAction="#moveSongToPlaylist" prefHeight="25.0" prefWidth="38.0">
                <font>
                   <Font size="14.0" />
                </font>
