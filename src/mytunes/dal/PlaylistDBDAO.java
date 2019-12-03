@@ -47,7 +47,7 @@ private SQLServerDataSource ds;
     
     }
  
-    private List<Playlist> loadPlaylists(){
+    public List<Playlist> loadPlaylists(){
         try(Connection con = ds.getConnection()){
             List<Playlist> pl = new ArrayList();
             String sql = "SELECT * FROM Playlist";

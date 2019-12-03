@@ -37,6 +37,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import mytunes.be.Playlist;
 import mytunes.be.Song;
+import mytunes.bll.BllFacade;
 import mytunes.bll.BllManager;
 
 
@@ -46,6 +47,7 @@ import mytunes.bll.BllManager;
  */
 public class AppController implements Initializable {
     BllManager bll = new BllManager();
+    private BllFacade bllfacade = new BllManager();
     private ObservableList<Song> obsSongs = FXCollections.observableArrayList(bll.getAllSongs());
     private ObservableList<Playlist> obsPlaylists = FXCollections.observableArrayList(bll.getAllPlaylists());
     private ObservableList<Song> obsSOP; 
