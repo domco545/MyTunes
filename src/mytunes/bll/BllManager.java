@@ -89,7 +89,7 @@ public class BllManager implements BllFacade {
 
     @Override
     public void updatePlaylist(Playlist playlist) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        pldb.updatePlaylist(playlist);
     }
     
 }
