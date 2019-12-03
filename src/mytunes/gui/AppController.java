@@ -39,6 +39,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import mytunes.be.Playlist;
 import mytunes.be.Song;
+import mytunes.bll.BllFacade;
 import mytunes.bll.BllManager;
 
 
@@ -48,8 +49,9 @@ import mytunes.bll.BllManager;
  */
 public class AppController implements Initializable {
     BllManager bll = new BllManager();
-    private ObservableList<Song> obsSongs;
-    private ObservableList<Playlist> obsPlaylists;
+    private BllFacade bllfacade = new BllManager();
+    private ObservableList<Song> obsSongs = FXCollections.observableArrayList(bll.getAllSongs());
+    private ObservableList<Playlist> obsPlaylists = FXCollections.observableArrayList(bll.getAllPlaylists());
     private ObservableList<Song> obsSOP; 
    
     Stage window;
@@ -128,7 +130,7 @@ public class AppController implements Initializable {
             root = FXMLLoader.load(getClass().getResource("NewPlaylist.fxml"));
             Stage stage = new Stage();
            
-            stage.setTitle("New Playlist");
+            stage.setTitle("New/Edit Playlist");
             stage.setScene(new Scene(root, 350,250));
             stage.show();
             stage.setOnHiding(new EventHandler<WindowEvent>() {
@@ -151,6 +153,18 @@ public class AppController implements Initializable {
 
     @FXML
     private void editPlaylist(ActionEvent event) {
+        Parent root;
+        try{
+            root = FXMLLoader.load(getClass().getResource("NewPlaylist.fxml"));
+            Stage stage = new Stage();
+           
+            stage.setTitle("New/Edit Playlist");
+            stage.setScene(new Scene(root, 350,250));
+            stage.show();
+            
+            
+        }catch(IOException e){e.printStackTrace();}
+        
     }
 
     @FXML
@@ -206,6 +220,7 @@ public class AppController implements Initializable {
         Playlist pl = lstPlaylists.getSelectionModel().getSelectedItem();
         obsSOP= FXCollections.observableArrayList(pl.getAllSongsOnPlaylist());
         lstSOP.setItems(obsSOP);
+        
     }
 
     @FXML

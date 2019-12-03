@@ -6,6 +6,7 @@
 package mytunes.gui;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -52,6 +53,8 @@ private ObservableList<Playlist> obsPlaylists = FXCollections.observableArrayLis
     private void save(ActionEvent event) {
         if(txtNewPlaylist!=null)
         bll.createPlaylist(txtNewPlaylist.getText());
+        bll.reloadPlaylists();
+       
         cancel(event);   
     }
     

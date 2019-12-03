@@ -19,7 +19,7 @@ import mytunes.dal.SongDBDAO;
  *
  * @author domin
  */
-public class BllManager {
+public class BllManager implements BllFacade {
     List<Genre> genreList = new ArrayList();
     
     List<Playlist> playlistList = new ArrayList();
@@ -46,11 +46,7 @@ public class BllManager {
         playlistList = pldb.getAllPlaylists();
     }
     
-    public List<Song> getAllSongs(){
-        List<Song> songList = new ArrayList();
-        songList = sdb.getAllSongs();
-        return songList;
-    }
+
     
     public List<Playlist> getAllPlaylists(){
         return playlistList;
@@ -59,5 +55,42 @@ public class BllManager {
     {
         pldb.createPlaylist(name);
     }
+
+    @Override
+    public List<Song> getAllSongs() {
+          List<Song> songList = new ArrayList();
+        songList = sdb.getAllSongs();
+        return songList;}
+
+    @Override
+    public void createSong(String title, String artist, int genre, int time, String path) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void editSong(Song song) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void deleteById(Song song) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Playlist> loadPlaylists() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Genre> loadGenres() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void updatePlaylist(Playlist playlist) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
+ 
