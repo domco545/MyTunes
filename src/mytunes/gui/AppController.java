@@ -118,17 +118,7 @@ public class AppController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       
-        ClTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
-        ClArtist.setCellValueFactory(new PropertyValueFactory<>("artist"));
-        ClCategory.setCellValueFactory(new PropertyValueFactory<>("genre"));
-        ClTime.setCellValueFactory(new PropertyValueFactory<>("time"));
-        lstSongs.setItems(obsSongs);  
-        
-        ClName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        ClSongs.setCellValueFactory(new PropertyValueFactory<>("songs"));
-        ClPTime.setCellValueFactory(new PropertyValueFactory<>("time"));
-        lstPlaylists.setItems(obsPlaylists);
+        init();
     }   
 
     @FXML
@@ -141,6 +131,7 @@ public class AppController implements Initializable {
             stage.setTitle("New Playlist");
             stage.setScene(new Scene(root, 350,250));
             stage.show();
+            
         }catch(IOException e){e.printStackTrace();}
     }
 
@@ -215,6 +206,23 @@ public class AppController implements Initializable {
         Playlist pl = lstPlaylists.getSelectionModel().getSelectedItem();
         obsSOP= FXCollections.observableArrayList(pl.getAllSongsOnPlaylist());
         lstSOP.setItems(obsSOP);
+    }
+    
+    public void init(){
+        obsSongs = FXCollections.observableArrayList(bll.getAllSongs());
+        obsPlaylists = FXCollections.observableArrayList(bll.getAllPlaylists());
+        
+               
+        ClTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+        ClArtist.setCellValueFactory(new PropertyValueFactory<>("artist"));
+        ClCategory.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        ClTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+        lstSongs.setItems(obsSongs);  
+        
+        ClName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        ClSongs.setCellValueFactory(new PropertyValueFactory<>("songs"));
+        ClPTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+        lstPlaylists.setItems(obsPlaylists);
     }
 
 

@@ -54,7 +54,7 @@ public class BllManager implements BllFacade {
     public void createPlaylist(String name)
     {
         pldb.createPlaylist(name);
-    
+        reloadPlaylists();
     }
 
     @Override
