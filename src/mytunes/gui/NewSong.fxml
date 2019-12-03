@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="mytunes.gui.NewSongController">
+   <children>
+      <TextField fx:id="txtNewSong" layoutX="188.0" layoutY="106.0" />
+      <TextField fx:id="txtNewArtist" layoutX="188.0" layoutY="141.0" />
+      <Label layoutX="155.0" layoutY="110.0" prefHeight="18.0" prefWidth="46.0" text="Title :" />
+      <Label layoutX="153.0" layoutY="145.0" text="Artist :" />
+      <Label layoutX="132.0" layoutY="175.0" prefHeight="18.0" prefWidth="56.0" text="Category :" />
+      <Label layoutX="154.0" layoutY="215.0" text="Time :" />
+      <Label layoutX="165.0" layoutY="254.0" prefHeight="18.0" prefWidth="26.0" text="File :" />
+      <TextField fx:id="txtNewSongFile" layoutX="195.0" layoutY="250.0" prefHeight="26.0" prefWidth="230.0" />
+      <Button fx:id="btnCancelNewSong" layoutX="383.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleCancelNewSong" text="Cancel" />
+      <Button fx:id="btnSaveNewSong" layoutX="457.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleSaveNewSong" text="Save" />
+      <Button fx:id="btnChoose" layoutX="436.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleChoosePath" text="Choose.." />
+      <TextField fx:id="txtNewSongTime" layoutX="195.0" layoutY="211.0" prefHeight="26.0" prefWidth="141.0" />
+      <Button fx:id="btnMoreGenre" layoutX="359.0" layoutY="171.0" mnemonicParsing="false" onAction="#handleMoreGenre" text="More.." />
+      <SplitMenuButton fx:id="menuGenres" layoutX="195.0" layoutY="171.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="142.0">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+      </SplitMenuButton>
+   </children>
+</AnchorPane>

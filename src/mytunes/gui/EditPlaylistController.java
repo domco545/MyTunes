@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import mytunes.be.Playlist;
 import mytunes.bll.BllFacade;
 import mytunes.bll.BllManager;
 
@@ -46,7 +47,7 @@ private BllFacade bllfacade = new BllManager();
     @FXML
     private void update(ActionEvent event) {
         if(txtNewPlaylist!=null)
-        bllfacade.updatePlaylist(txtNewPlaylist.getText());       
+        //bllfacade.updatePlaylist();       
         cancel(event);   
     }
     
