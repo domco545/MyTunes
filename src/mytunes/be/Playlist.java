@@ -11,6 +11,8 @@ import java.util.List;
 public class Playlist{
     private int id;
     private String name;
+    private int totalSongs;
+    private int totalTime;
     private List<Song> songs = new ArrayList();
 
     public Playlist(int id, String name) {
@@ -37,6 +39,22 @@ public class Playlist{
     
     public void setName(String name){
         this.name = name;
+    }
+
+    public int getTotalSongs() {
+        return totalSongs;
+    }
+
+    public void setTotalSongs(int totalSongs) {
+        this.totalSongs = totalSongs;
+    }
+
+    public int getTotalTime() {
+        return totalTime;
+    }
+
+    public void setTotalTime(int totalTime) {
+        this.totalTime = totalTime;
     }
 
     @Override
