@@ -52,9 +52,7 @@ private ObservableList<Playlist> obsPlaylists = FXCollections.observableArrayLis
     @FXML
     private void save(ActionEvent event) {
         if(txtNewPlaylist!=null)
-        bll.createPlaylist(txtNewPlaylist.getText());
-        bll.reloadPlaylists();
-       
+        bll.createPlaylist(txtNewPlaylist.getText());       
         cancel(event);   
     }
     
