@@ -21,7 +21,7 @@ import mytunes.dal.SongDBDAO;
  */
 public class BllManager implements BllFacade {
     List<Genre> genreList = new ArrayList();
-    
+    List<Song> songList = new ArrayList();
     List<Playlist> playlistList = new ArrayList();
     
     PlaylistDBDAO pldb = new PlaylistDBDAO();
@@ -34,7 +34,7 @@ public class BllManager implements BllFacade {
     
     public void init(){
         genreList = gdb.loadGenres();
-        //songList = sdb.getAllSongs();
+        songList = sdb.getAllSongs();
         playlistList = pldb.getAllPlaylists();
     }
     
@@ -58,9 +58,8 @@ public class BllManager implements BllFacade {
 
     @Override
     public List<Song> getAllSongs() {
-          List<Song> songList = new ArrayList();
-        songList = sdb.getAllSongs();
-        return songList;}
+        return songList;
+    }
 
     @Override
     public void createSong(String title, String artist, int genre, int time, String path) {
@@ -100,6 +99,11 @@ public class BllManager implements BllFacade {
     @Override
     public void addSongToPlaylist(int plId, int sId) {
         pldb.addSongToPlaylist(plId, sId);
+    }
+
+    @Override
+    public void reloadSongs() {
+        songList = sdb.getAllSongs();
     }
     
 }

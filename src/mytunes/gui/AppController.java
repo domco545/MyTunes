@@ -30,6 +30,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -56,7 +57,7 @@ public class AppController implements Initializable {
    
     private int selectedPlaylistId;
     private int selectedSongId;
-    
+    private boolean inSearch;
     @FXML
     private Button btnPlay;
     @FXML
@@ -208,6 +209,20 @@ public class AppController implements Initializable {
 
     @FXML
     private void handleFilter(ActionEvent event) {
+        
+        Image imageC = new Image(getClass().getResourceAsStream("/icons/button1.png"));
+        Image imageF = new Image(getClass().getResourceAsStream("/icons/button4.png"));
+
+        if(!inSearch){
+        btnFind.setImage(imageC);
+        //query here
+        inSearch = true;
+        }else{
+        btnFind.setImage(imageF); 
+        bllfacade.reloadSongs();
+        init();
+        inSearch = false;
+        }
     }
 
     @FXML
