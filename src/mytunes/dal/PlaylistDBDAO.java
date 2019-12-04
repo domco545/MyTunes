@@ -73,17 +73,7 @@ public class PlaylistDBDAO {
     } catch (SQLException ex) {
         Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
     }
-    }
-    
-    
-    
-    public List<Playlist> loadPlaylists(){
-        try(Connection con = ds.getConnection()){
-            Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+  }
 
     public List<Playlist> loadPlaylists() {
         try ( Connection con = ds.getConnection()) {
