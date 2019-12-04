@@ -21,7 +21,7 @@ import mytunes.dal.SongDBDAO;
  */
 public class BllManager implements BllFacade {
     List<Genre> genreList = new ArrayList();
-    
+    List<Song> songlist = new ArrayList();
     List<Playlist> playlistList = new ArrayList();
     
     PlaylistDBDAO pldb = new PlaylistDBDAO();
@@ -34,13 +34,15 @@ public class BllManager implements BllFacade {
     
     public void init(){
         genreList = gdb.loadGenres();
-        //songList = sdb.getAllSongs();
+        songlist = sdb.getAllSongs();
         playlistList = pldb.getAllPlaylists();
     }
     
     public void reloadGenre(){
         genreList = gdb.loadGenres();
     }
+    public void reloadSongs()
+    {  songlist = sdb.getAllSongs(); }
     
     public void reloadPlaylists(){
         playlistList = pldb.getAllPlaylists();
@@ -74,7 +76,7 @@ public class BllManager implements BllFacade {
 
     @Override
     public void deleteById(Song song) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     sdb.deleteById(song);
     }
 
     @Override

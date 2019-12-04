@@ -28,4 +28,5 @@ public interface BllFacade {
     public void deletePlaylist(Playlist playlist);
     public void addSongToPlaylist(int plId, int sId);
     public void reloadPlaylists();
+    public void reloadSongs();
 }
