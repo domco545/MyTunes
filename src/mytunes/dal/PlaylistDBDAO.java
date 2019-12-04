@@ -80,7 +80,10 @@ private SQLServerDataSource ds;
     }
     }
     
-    
+    public void deleteSongFromPlaylist()
+    {
+        
+    }
     public List<Playlist> loadPlaylists(){
         try(Connection con = ds.getConnection()){
             List<Playlist> pl = new ArrayList();
