@@ -69,6 +69,16 @@ public class PlaylistDBDAO {
             p.executeUpdate();
 
         } catch (SQLServerException ex) {
+        Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (SQLException ex) {
+        Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }
+    
+    
+    
+    public List<Playlist> loadPlaylists(){
+        try(Connection con = ds.getConnection()){
             Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -78,12 +88,15 @@ public class PlaylistDBDAO {
     public List<Playlist> loadPlaylists() {
         try ( Connection con = ds.getConnection()) {
             List<Playlist> pl = new ArrayList();
-            String sql = "SELECT * FROM Playlist";
+            String sql = "SELECT Playlist.*,SUM(time) AS totaltime,COUNT(playlist_id) AS totalsongs FROM Playlist\n" +
+                         "LEFT JOIN Songs_On_Playlist ON Playlist.id  = Songs_On_Playlist.playlist_id\n" +
+                         "LEFT JOIN Songs ON Songs_On_Playlist.song_id = Songs.id\n" +
+                         "GROUP BY Playlist.id,Playlist.name";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-
-            while (rs.next()) {
-                pl.add(new Playlist(rs.getInt("id"), rs.getString("name")));
+            
+            while(rs.next()){                
+                pl.add(new Playlist(rs.getInt("id"), rs.getString("name"), rs.getInt("totaltime"), rs.getInt("totalsongs")));
             }
 
             return pl;

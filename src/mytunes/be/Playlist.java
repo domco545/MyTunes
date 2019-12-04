@@ -15,9 +15,11 @@ public class Playlist{
     private int totalTime;
     private List<Song> songs = new ArrayList();
 
-    public Playlist(int id, String name) {
+    public Playlist(int id, String name,int totalTime, int totalSongs) {
       this.id = id;
       this.name = name;
+      this.totalTime = totalTime;
+      this.totalSongs = totalSongs;
 	
     }
     
