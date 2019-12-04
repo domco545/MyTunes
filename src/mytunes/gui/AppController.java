@@ -152,6 +152,7 @@ public class AppController implements Initializable {
        bllfacade.deleteSongOnPlaylist(selectedPlaylistId, selectedSongId);
         bllfacade.reloadPlaylists();
         init();
+        
     }
 
     @FXML
@@ -282,8 +283,8 @@ public class AppController implements Initializable {
         lstSongs.setItems(obsSongs);  
         
         ClName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        ClSongs.setCellValueFactory(new PropertyValueFactory<>("songs"));
-        ClPTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+        ClSongs.setCellValueFactory(new PropertyValueFactory<>("totalSongs"));
+        ClPTime.setCellValueFactory(new PropertyValueFactory<>("totalTime"));
         lstPlaylists.setItems(obsPlaylists);
     }
 
