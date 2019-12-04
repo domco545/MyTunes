@@ -41,6 +41,8 @@ public class BllManager implements BllFacade {
     public void reloadGenre(){
         genreList = gdb.loadGenres();
     }
+    public void reloadSongs()
+    {  songlist = sdb.getAllSongs(); }
     
     public void reloadPlaylists(){
         playlistList = pldb.getAllPlaylists();
@@ -73,7 +75,7 @@ public class BllManager implements BllFacade {
 
     @Override
     public void deleteById(Song song) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     sdb.deleteById(song);
     }
 
     @Override

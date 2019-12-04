@@ -119,11 +119,11 @@ public class SongDBDAO {
    {
         try(Connection con=ds.getConnection())
         {
-            String sql = "delete from Songs where id = ?";
+            String sql = " DELETE FROM Songs_On_Playlist WHERE song_id=?;DELETE FROM Songs WHERE id = ?";
             PreparedStatement p = con.prepareStatement(sql);
             
             p.setInt(1,song.getId());
-            
+            p.setInt(2, song.getId());
             p.executeUpdate();
                     
         } catch (SQLServerException ex) {
