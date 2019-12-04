@@ -29,4 +29,6 @@ public interface BllFacade {
     public void addSongToPlaylist(int plId, int sId);
     public void reloadPlaylists();
     public void reloadSongs();
+    public void reloadGenre();
+    public void init();
 }

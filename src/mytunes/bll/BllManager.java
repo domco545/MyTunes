@@ -32,25 +32,29 @@ public class BllManager implements BllFacade {
         init();
     }
     
+    @Override
     public void init(){
         genreList = gdb.loadGenres();
         songList = sdb.getAllSongs();
         playlistList = pldb.getAllPlaylists();
     }
     
+    @Override
     public void reloadGenre(){
         genreList = gdb.loadGenres();
     }
     
+    @Override
     public void reloadPlaylists(){
         playlistList = pldb.getAllPlaylists();
     }
     
-
-    
+    @Override
     public List<Playlist> getAllPlaylists(){
         return playlistList;
     }
+    
+    @Override
     public void createPlaylist(String name)
     {
         pldb.createPlaylist(name);
