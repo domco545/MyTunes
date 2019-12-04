@@ -149,10 +149,9 @@ public class AppController implements Initializable {
 
     @FXML
     private void deleteSongOnPlaylist(ActionEvent event) {
-       bllfacade.deleteSongOnPlaylist(selectedPlaylistId, selectedSongId);
+        bllfacade.deleteSongOnPlaylist(selectedPlaylistId, selectedSongId);
         bllfacade.reloadPlaylists();
         init();
-        
     }
 
     @FXML

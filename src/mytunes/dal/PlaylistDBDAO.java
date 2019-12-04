@@ -148,7 +148,7 @@ public class PlaylistDBDAO {
 
     public void deleteSongOnPlaylist(int plId, int sId) {
         try (Connection con = ds.getConnection()) {
-            String sql = "DELETE FROM Songs_On_Playlist WHERE playlist_id =? AND song_id=? ";
+            String sql = "DELETE FROM Songs_On_Playlist WHERE playlist_id =? AND song_id=?";
             PreparedStatement p = con.prepareStatement(sql);
             p.setInt(1, plId);
             p.setInt(2, sId);
