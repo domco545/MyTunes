@@ -224,10 +224,15 @@ public class AppController implements Initializable {
         if(!inSearch){
         btnFind.setImage(imageC);
         //query here
+        String querry = txtInput.getText();
+        if(querry !=null){
+        obsSongs = FXCollections.observableArrayList(bllfacade.querrySongs(querry));
+        lstSongs.setItems(obsSongs);
+        }
         inSearch = true;
         }else{
         btnFind.setImage(imageF); 
-        bllfacade.reloadSongs();
+        txtInput.setText("");
         init();
         inSearch = false;
         }

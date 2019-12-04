@@ -133,5 +133,43 @@ public class SongDBDAO {
         }
    
    }
+   
+   public List<Song> querrySongs(String querry){
+        try(Connection con=ds.getConnection()){
+        List<Song> songs = new ArrayList();
+        querry = querry.replace("!", "!!")
+                       .replace("%", "!%")
+                       .replace("_", "!_")
+                       .replace("[", "![");
+        String sql="SELECT Songs.*, Genre.name FROM Songs \n" +
+                   "LEFT JOIN Genre ON Songs.genre_id = Genre.id\n" +
+                   "WHERE title LIKE ? OR artist LIKE ?";
+                        
+        PreparedStatement p= con.prepareStatement(sql);
+        p.setString(1, "%"+querry+"%");
+        p.setString(2, "%"+querry+"%");
+        ResultSet r = p.executeQuery();
+        
+        while(r.next())
+        {
+            int id = r.getInt("id");
+            String title=r.getString("title");
+            String artist=r.getString("artist");
+            Genre genre = new Genre(r.getInt("genre_id"),r.getString("name"));
+            int time=r.getInt("time");
+            String path=r.getString("path");
+             
+           Song song = new Song(id,title,artist,genre,time,path);
+           songs.add(song);
+        }
+        return songs;
+       }
+          catch (SQLServerException ex) {
+            Logger.getLogger(SongDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(SongDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+   }
 }
    
