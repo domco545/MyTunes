@@ -7,12 +7,19 @@ package mytunes.gui;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
+import mytunes.be.Playlist;
+import mytunes.be.Song;
+import mytunes.bll.BllFacade;
+import mytunes.bll.BllManager;
 
 /**
  * FXML Controller class
@@ -20,7 +27,8 @@ import javafx.scene.control.TextField;
  * @author narma
  */
 public class NewSongController implements Initializable {
-
+    BllFacade bllfacade = new BllManager(); 
+    private ObservableList<Song> obsSongs = FXCollections.observableArrayList(bllfacade.getAllSongs());
     @FXML
     private TextField txtNewSong;
     @FXML
@@ -50,11 +58,15 @@ public class NewSongController implements Initializable {
 
     @FXML
     private void handleCancelNewSong(ActionEvent event) {
+                ((Node)(event.getSource())).getScene().getWindow().hide();
+
     }
 
-    @FXML
+   /* @FXML
     private void handleSaveNewSong(ActionEvent event) {
-    }
+        if(txtNewSong!=null && txtNewArtist!=null && txtNewSongTime!=null && txtNewSongFile!=null)
+        //bllfacade.createSong(txtNewSong.getText(),txtNewArtist.getText(),,0,txtNewSongFile.getText());
+    }*/
 
     @FXML
     private void handleChoosePath(ActionEvent event) {
