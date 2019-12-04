@@ -139,7 +139,7 @@ public class AppController implements Initializable {
             stage.setOnHiding(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent event) {
-                    bll.reloadPlaylists();
+                    bllfacade.reloadPlaylists();
                     init();
                 }
             });
@@ -175,7 +175,7 @@ public class AppController implements Initializable {
             stage.setOnHiding(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent event) {
-                    bll.reloadPlaylists();
+                    bllfacade.reloadPlaylists();
                     init();
                 }
             });
