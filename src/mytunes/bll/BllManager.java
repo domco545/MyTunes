@@ -41,8 +41,6 @@ public class BllManager implements BllFacade {
     public void reloadGenre(){
         genreList = gdb.loadGenres();
     }
-    public void reloadSongs()
-    {  songlist = sdb.getAllSongs(); }
     
     public void reloadPlaylists(){
         playlistList = pldb.getAllPlaylists();
