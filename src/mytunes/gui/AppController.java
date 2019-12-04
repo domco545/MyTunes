@@ -148,6 +148,7 @@ public class AppController implements Initializable {
 
     @FXML
     private void deleteSongOnPlaylist(ActionEvent event) {
+        
     }
 
     @FXML
