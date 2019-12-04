@@ -112,6 +112,11 @@ public class BllManager implements BllFacade {
     public void reloadSongs() {
         songList = sdb.getAllSongs();
     }
+
+    @Override
+    public List<Song> querrySongs(String querry) {
+        return sdb.querrySongs(querry);
+    }
     
 }
  

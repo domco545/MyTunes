@@ -32,4 +32,5 @@ public interface BllFacade {
     public void reloadSongs();
     public void reloadGenre();
     public void init();
+    public List<Song> querrySongs(String querry);
 }
