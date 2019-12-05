@@ -68,16 +68,16 @@ public class SongDBDAO {
         return null;
    }
 
-   public void createSong(String title,String artist,String genre,int time,String path)
+   public void createSong(String title,String artist,int genre,int time,String path)
    {
      
        try(Connection con=ds.getConnection()){
-       String sql = "insert into Songs (title,artist,genre,time,path) values (?,?,?,?,?)";
+       String sql = "insert into Songs (title,artist,genre_id,time,path) values (?,?,?,?,?)";
         PreparedStatement p=con.prepareStatement(sql);
        
         p.setString(1, title);
         p.setString(2, artist);
-        p.setString(3, genre);
+        p.setInt(3, genre);
         p.setInt(4, time);
         p.setString(5, path);
         p.executeUpdate();

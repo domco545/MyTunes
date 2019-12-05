@@ -64,7 +64,7 @@ public class NewSongController implements Initializable {
     @FXML
     private void handleSaveNewSong(ActionEvent event) {
         if(txtNewSong!=null && txtNewArtist!=null && txtNewSongTime!=null && txtNewSongFile!=null)
-        bllfacade.createSong(txtNewSong.getText(),txtNewArtist.getText(),txtGenreInput.getText(),parseInt(txtNewSongTime.getText()),txtNewSongFile.getText());
+        bllfacade.createSong(txtNewSong.getText(),txtNewArtist.getText(),parseInt(txtGenreInput.getText()),parseInt(txtNewSongTime.getText()),txtNewSongFile.getText());
         handleCancelNewSong(event);
     }
 
