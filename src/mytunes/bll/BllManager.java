@@ -66,8 +66,8 @@ public class BllManager implements BllFacade {
     }
 
     @Override
-    public void createSong(String title, String artist, int genre, int time, String path) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void createSong(String title, String artist, Genre genre, int time, String path) {
+        sdb.createSong(title, artist, genre, time, path);
     }
 
     @Override

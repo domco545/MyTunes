@@ -5,6 +5,7 @@
  */
 package mytunes.gui;
 
+import static java.lang.Integer.parseInt;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -62,11 +63,11 @@ public class NewSongController implements Initializable {
 
     }
 
-   /* @FXML
+    @FXML
     private void handleSaveNewSong(ActionEvent event) {
         if(txtNewSong!=null && txtNewArtist!=null && txtNewSongTime!=null && txtNewSongFile!=null)
-        //bllfacade.createSong(txtNewSong.getText(),txtNewArtist.getText(),,0,txtNewSongFile.getText());
-    }*/
+        bllfacade.createSong(txtNewSong.getText(),txtNewArtist.getText(),,parseInt(txtNewSongTime.getText()),txtNewSongFile.getText());
+    }
 
     @FXML
     private void handleChoosePath(ActionEvent event) {

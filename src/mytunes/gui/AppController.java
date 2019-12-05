@@ -193,7 +193,24 @@ public class AppController implements Initializable {
 
     @FXML
     private void newSong(ActionEvent event) {
-        
+         Parent root; 
+        try{
+            root = FXMLLoader.load(getClass().getResource("NewSong.fxml"));
+            Stage stage = new Stage();
+           
+            stage.setTitle("New Song");
+            stage.setScene(new Scene(root, 550,450));
+            stage.show();
+            /*stage.setOnHiding(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    bllfacade.reloadSongs();
+                    init();
+                }
+            });*/
+        } catch (IOException ex) {
+            Logger.getLogger(AppController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
