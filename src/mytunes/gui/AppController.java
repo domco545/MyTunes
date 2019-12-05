@@ -201,13 +201,13 @@ public class AppController implements Initializable {
             stage.setTitle("New Song");
             stage.setScene(new Scene(root, 550,450));
             stage.show();
-            /*stage.setOnHiding(new EventHandler<WindowEvent>() {
+            stage.setOnHiding(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent event) {
                     bllfacade.reloadSongs();
                     init();
                 }
-            });*/
+            });
         } catch (IOException ex) {
             Logger.getLogger(AppController.class.getName()).log(Level.SEVERE, null, ex);
         }

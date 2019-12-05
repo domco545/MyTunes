@@ -45,9 +45,7 @@ public class NewSongController implements Initializable {
     @FXML
     private TextField txtNewSongTime;
     @FXML
-    private Button btnMoreGenre;
-    @FXML
-    private SplitMenuButton menuGenres;
+    private TextField txtGenreInput;
 
     /**
      * Initializes the controller class.
@@ -66,15 +64,13 @@ public class NewSongController implements Initializable {
     @FXML
     private void handleSaveNewSong(ActionEvent event) {
         if(txtNewSong!=null && txtNewArtist!=null && txtNewSongTime!=null && txtNewSongFile!=null)
-        bllfacade.createSong(txtNewSong.getText(),txtNewArtist.getText(),,parseInt(txtNewSongTime.getText()),txtNewSongFile.getText());
+        bllfacade.createSong(txtNewSong.getText(),txtNewArtist.getText(),txtGenreInput.getText(),parseInt(txtNewSongTime.getText()),txtNewSongFile.getText());
+        handleCancelNewSong(event);
     }
 
     @FXML
     private void handleChoosePath(ActionEvent event) {
     }
 
-    @FXML
-    private void handleMoreGenre(ActionEvent event) {
-    }
     
 }

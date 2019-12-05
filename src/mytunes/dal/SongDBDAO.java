@@ -68,7 +68,7 @@ public class SongDBDAO {
         return null;
    }
 
-   public void createSong(String title,String artist,Genre genre,int time,String path)
+   public void createSong(String title,String artist,String genre,int time,String path)
    {
      
        try(Connection con=ds.getConnection()){
@@ -77,7 +77,7 @@ public class SongDBDAO {
        
         p.setString(1, title);
         p.setString(2, artist);
-        p.setString(3, genre.getName());
+        p.setString(3, genre);
         p.setInt(4, time);
         p.setString(5, path);
         p.executeUpdate();

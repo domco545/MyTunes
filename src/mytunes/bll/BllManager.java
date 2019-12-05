@@ -66,7 +66,7 @@ public class BllManager implements BllFacade {
     }
 
     @Override
-    public void createSong(String title, String artist, Genre genre, int time, String path) {
+    public void createSong(String title, String artist, String genre, int time, String path) {
         sdb.createSong(title, artist, genre, time, path);
     }
 
