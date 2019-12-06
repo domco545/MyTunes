@@ -171,12 +171,12 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="378.0" layoutY="560.0" mnemonicParsing="false" onAction="#moveSongDown" prefHeight="25.0" prefWidth="38.0">
+            <Button fx:id="btnMoveDown" layoutX="378.0" layoutY="560.0" mnemonicParsing="false" onAction="#moveSongDown" prefHeight="25.0" prefWidth="38.0">
                <font>
                   <Font size="14.0" />
                </font>
                <graphic>
-                  <ImageView fx:id="btnMoveDown" fitHeight="23.0" fitWidth="20.0" style="-fx-rotate: 180;">
+                  <ImageView fitHeight="23.0" fitWidth="20.0" style="-fx-rotate: 180;">
                      <image>
                         <Image url="@../../icons/button5.png" />
                      </image>

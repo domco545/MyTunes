@@ -17,7 +17,7 @@ import mytunes.be.Song;
 public interface BllFacade {
     
     public List<Song> getAllSongs();
-    public void createSong(String title,String artist,int genre,int time,String path);
+    public void createSong(String title,String artist,Genre genre,int time,String path);
     public void editSong(Song song);
     public void deleteById(Song song);
     public void createPlaylist( String name);
