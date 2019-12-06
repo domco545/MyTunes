@@ -72,7 +72,7 @@ public class BllManager implements BllFacade {
 
     @Override
     public void editSong(Song song) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      sdb.editSong(song);
     }
 
     @Override
