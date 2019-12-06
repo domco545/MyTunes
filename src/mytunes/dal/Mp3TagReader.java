@@ -5,6 +5,8 @@
  */
 package mytunes.dal;
 
+import com.mpatric.mp3agic.ID3v1;
+import com.mpatric.mp3agic.ID3v2;
 import com.mpatric.mp3agic.InvalidDataException;
 import com.mpatric.mp3agic.Mp3File;
 import com.mpatric.mp3agic.UnsupportedTagException;
@@ -31,10 +33,22 @@ public class Mp3TagReader {
         }
     }
     
-    public int getLength(){
-        return 0;
+    public String getLength(){
+       long time = mp3file.getLengthInMilliseconds();
+       int seconds = (int) (time / 1000) % 60 ;
+       int minutes = (int) ((time / (1000*60)) % 60);
+       int hours   = (int) ((time / (1000*60*60)) % 24);
+       return hours+":"+minutes+":"+seconds;
+    }  
+    
+    public String getName(){
+        return mp3file.getFilename();
+    }
+    
+    public static void main(String[] args) {
+        Mp3TagReader t = new Mp3TagReader("");
+        System.out.println(t.getLength());
+        System.out.println(t.getName());
         
-    }    
-    
-    
+    }
 }
