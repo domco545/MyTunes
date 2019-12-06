@@ -53,7 +53,7 @@ public class AppController implements Initializable {
     private BllFacade bllfacade = new BllManager();
     private ObservableList<Song> obsSongs = FXCollections.observableArrayList(bllfacade.getAllSongs());
     private ObservableList<Playlist> obsPlaylists = FXCollections.observableArrayList(bll.getAllPlaylists());
-    private ObservableList<Song> obsSOP; 
+    private ObservableList<Song>  obsSOP ; 
    
     private int selectedPlaylistId;
     private int selectedSongId;
@@ -93,7 +93,7 @@ public class AppController implements Initializable {
     @FXML
     private ImageView btnNextSong;
     @FXML
-    private ImageView btnMoveDown;
+    private Button btnMoveDown;
     @FXML
     private ImageView btnAddToPL;
     @FXML
@@ -125,6 +125,7 @@ public class AppController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         init();
+        
     }   
 
     @FXML
@@ -149,7 +150,10 @@ public class AppController implements Initializable {
 
     @FXML
     private void deleteSongOnPlaylist(ActionEvent event) {
-        bllfacade.deleteSongOnPlaylist(selectedPlaylistId, selectedSongId);
+        bllfacade.deleteSongOnPlaylist(
+                lstPlaylists.getSelectionModel().getSelectedItem().getId(), 
+                lstSOP.getSelectionModel().getSelectedItem().getId()
+        );
         bllfacade.reloadPlaylists();
         init();
     }
@@ -185,10 +189,6 @@ public class AppController implements Initializable {
             });
         }catch(IOException e){e.printStackTrace();}
         
-    }
-
-    @FXML
-    private void moveSongUp(ActionEvent event) {
     }
 
     @FXML
@@ -266,9 +266,34 @@ public class AppController implements Initializable {
     @FXML
     private void nextSong(ActionEvent event) {
     }
+    
+     @FXML
+    private void moveSongUp(ActionEvent event) {
+         
+        Song songToMove = lstSOP.getSelectionModel().getSelectedItem();
+        int index = lstSOP.getSelectionModel().getSelectedIndex();
+        Song songAbove = lstSOP.getItems().get(index-1);
+        
+        if(index > 0){
+        lstSOP.getItems().set(index-1, songToMove);
+        lstSOP.getItems().set(index, songAbove);
+        }
+        
+    }
 
     @FXML
     private void moveSongDown(ActionEvent event) {
+        
+        int index = lstSOP.getSelectionModel().getSelectedIndex();
+        Song songToMove = lstSOP.getSelectionModel().getSelectedItem();
+        Song songBelow = lstSOP.getItems().get(index+1);
+        
+        int size = obsSOP.size();
+        if(index < size){
+        lstSOP.getItems().set(index+1, songToMove);
+        lstSOP.getItems().set(index, songBelow);
+       
+        }
     }
 
     @FXML
