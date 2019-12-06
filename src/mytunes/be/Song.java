@@ -17,6 +17,30 @@ public class Song {
     private int time;
     private String path;
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -43,6 +67,10 @@ public class Song {
     
     public int getGenreId(){
         return genre.getId();
+    }
+    public void setGenreName(String name)
+    {
+        genre.setName(name);
     }
 
     public Song(int id,String title, String artist, Genre genre, int time, String path) {

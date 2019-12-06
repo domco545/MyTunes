@@ -95,7 +95,7 @@ public class SongDBDAO {
    {
        try(Connection con=ds.getConnection())
        {
-           String sql="update Songs set title=? , artist=? , genre=? , time=? , path=? where id=?";
+           String sql="update Songs set title=? , artist=? , genre_id=? , time=? , path=? where id=?";
            PreparedStatement p=con.prepareStatement(sql);
            
            p.setString(1,song.getTitle());
