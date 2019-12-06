@@ -15,8 +15,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import mytunes.be.Genre;
 import mytunes.be.Playlist;
 import mytunes.be.Song;
 import mytunes.bll.BllFacade;
@@ -30,6 +33,7 @@ import mytunes.bll.BllManager;
 public class NewSongController implements Initializable {
     BllFacade bllfacade = new BllManager(); 
     private ObservableList<Song> obsSongs = FXCollections.observableArrayList(bllfacade.getAllSongs());
+      private ObservableList<Genre> obsGenre = FXCollections.observableArrayList(bllfacade.loadGenres());
     @FXML
     private TextField txtNewSong;
     @FXML
@@ -45,14 +49,15 @@ public class NewSongController implements Initializable {
     @FXML
     private TextField txtNewSongTime;
     @FXML
-    private TextField txtGenreInput;
+    private ChoiceBox<Genre> txtGenreInput;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       
+       txtGenreInput.getItems().addAll(obsGenre);
     }    
 
     @FXML
@@ -64,12 +69,17 @@ public class NewSongController implements Initializable {
     @FXML
     private void handleSaveNewSong(ActionEvent event) {
         if(txtNewSong!=null && txtNewArtist!=null && txtNewSongTime!=null && txtNewSongFile!=null)
-        bllfacade.createSong(txtNewSong.getText(),txtNewArtist.getText(),parseInt(txtGenreInput.getText()),parseInt(txtNewSongTime.getText()),txtNewSongFile.getText());
+        bllfacade.createSong(txtNewSong.getText(),txtNewArtist.getText(),txtGenreInput.getSelectionModel().getSelectedItem(),parseInt(txtNewSongTime.getText()),txtNewSongFile.getText());
         handleCancelNewSong(event);
     }
 
     @FXML
     private void handleChoosePath(ActionEvent event) {
+    }
+
+    @FXML
+    private void show(MouseEvent event) {
+         
     }
 
     

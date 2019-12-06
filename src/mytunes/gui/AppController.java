@@ -305,6 +305,7 @@ public class AppController implements Initializable {
         obsSOP= FXCollections.observableArrayList(lstPlaylists.getSelectionModel().getSelectedItem().getAllSongsOnPlaylist());
         selectedPlaylistId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
         lstSOP.setItems(obsSOP);
+        
     }
 
     @FXML
