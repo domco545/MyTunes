@@ -223,6 +223,28 @@ public class AppController implements Initializable {
 
     @FXML
     private void editSong(ActionEvent event) {
+         Parent root;
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("EditSong.fxml"));
+            root = loader.load();
+            Stage stage = new Stage();
+            
+            EditSongController esc = loader.getController();
+            esc.acceptSong(lstSongs.getSelectionModel().getSelectedItem());
+           
+            stage.setTitle("Edit Song");
+            stage.setScene(new Scene(root, 550,450));
+            stage.show();
+            stage.setOnHiding(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    bllfacade.init();
+                    
+                    init();
+                }
+            });
+        }catch(IOException e){e.printStackTrace();}
+        
     }
 
     @FXML
@@ -308,6 +330,7 @@ public class AppController implements Initializable {
         obsSOP= FXCollections.observableArrayList(lstPlaylists.getSelectionModel().getSelectedItem().getAllSongsOnPlaylist());
         selectedPlaylistId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
         lstSOP.setItems(obsSOP);
+        
     }
 
     @FXML

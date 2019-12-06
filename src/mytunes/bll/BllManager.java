@@ -66,13 +66,13 @@ public class BllManager implements BllFacade {
     }
 
     @Override
-    public void createSong(String title, String artist, int genre, int time, String path) {
+    public void createSong(String title, String artist, Genre genre, int time, String path) {
         sdb.createSong(title, artist, genre, time, path);
     }
 
     @Override
     public void editSong(Song song) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      sdb.editSong(song);
     }
 
     @Override
@@ -87,7 +87,7 @@ public class BllManager implements BllFacade {
 
     @Override
     public List<Genre> loadGenres() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return genreList;
     }
 
     @Override

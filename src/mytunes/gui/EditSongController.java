@@ -16,11 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import mytunes.be.Genre;
-import mytunes.be.Playlist;
 import mytunes.be.Song;
 import mytunes.bll.BllFacade;
 import mytunes.bll.BllManager;
@@ -30,10 +27,11 @@ import mytunes.bll.BllManager;
  *
  * @author narma
  */
-public class NewSongController implements Initializable {
-    BllFacade bllfacade = new BllManager(); 
-    private ObservableList<Song> obsSongs = FXCollections.observableArrayList(bllfacade.getAllSongs());
-      private ObservableList<Genre> obsGenre = FXCollections.observableArrayList(bllfacade.loadGenres());
+public class EditSongController implements Initializable {
+private BllFacade bllfacade = new BllManager();
+ private ObservableList<Genre> obsGenre = FXCollections.observableArrayList(bllfacade.loadGenres());
+ 
+Song song;
     @FXML
     private TextField txtNewSong;
     @FXML
@@ -56,20 +54,33 @@ public class NewSongController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
-       txtGenreInput.getItems().addAll(obsGenre);
+      txtGenreInput.getItems().addAll(obsGenre);
+      
     }    
 
+    public void acceptSong(Song song){
+        this.song = song;
+        txtNewSong.setText(song.getTitle());
+        txtNewArtist.setText(song.getArtist());
+        txtGenreInput.setItems(obsGenre);
+       txtNewSongTime.setText(String.valueOf(song.getTime()));
+        txtNewSongFile.setText(song.getPath());
+        
+        
+    }
     @FXML
     private void handleCancelNewSong(ActionEvent event) {
-                ((Node)(event.getSource())).getScene().getWindow().hide();
-
+        ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
     @FXML
     private void handleSaveNewSong(ActionEvent event) {
-        if(txtNewSong!=null && txtNewArtist!=null && txtNewSongTime!=null && txtNewSongFile!=null)
-        bllfacade.createSong(txtNewSong.getText(),txtNewArtist.getText(),txtGenreInput.getSelectionModel().getSelectedItem(),parseInt(txtNewSongTime.getText()),txtNewSongFile.getText());
+        song.setTitle(txtNewSong.getText());
+        song.setArtist(txtNewArtist.getText());
+        song.setGenre(txtGenreInput.getSelectionModel().getSelectedItem());
+        song.setTime(parseInt(txtNewSongTime.getText()));
+        song.setPath(txtNewSongFile.getText());
+            bllfacade.editSong(song);  
         handleCancelNewSong(event);
     }
 
@@ -77,10 +88,6 @@ public class NewSongController implements Initializable {
     private void handleChoosePath(ActionEvent event) {
     }
 
-    @FXML
-    private void show(MouseEvent event) {
-         
-    }
-
+    
     
 }

@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.NewSongController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.EditSongController">
    <children>
       <TextField fx:id="txtNewSong" layoutX="188.0" layoutY="106.0" />
       <TextField fx:id="txtNewArtist" layoutX="188.0" layoutY="141.0" />
@@ -20,6 +20,6 @@
       <Button fx:id="btnSaveNewSong" layoutX="457.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleSaveNewSong" text="Save" />
       <Button fx:id="btnChoose" layoutX="436.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleChoosePath" text="Choose.." />
       <TextField fx:id="txtNewSongTime" layoutX="195.0" layoutY="211.0" prefHeight="26.0" prefWidth="141.0" />
-      <ChoiceBox fx:id="txtGenreInput" layoutX="191.0" layoutY="172.0" onMouseClicked="#show" prefWidth="150.0" />
+      <ChoiceBox fx:id="txtGenreInput" layoutX="191.0" layoutY="172.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

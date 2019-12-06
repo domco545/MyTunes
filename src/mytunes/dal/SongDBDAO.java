@@ -68,7 +68,7 @@ public class SongDBDAO {
         return null;
    }
 
-   public void createSong(String title,String artist,int genre,int time,String path)
+   public void createSong(String title,String artist,Genre genre,int time,String path)
    {
      
        try(Connection con=ds.getConnection()){
@@ -77,7 +77,7 @@ public class SongDBDAO {
        
         p.setString(1, title);
         p.setString(2, artist);
-        p.setInt(3, genre);
+        p.setInt(3, genre.getId());
         p.setInt(4, time);
         p.setString(5, path);
         p.executeUpdate();
@@ -95,7 +95,7 @@ public class SongDBDAO {
    {
        try(Connection con=ds.getConnection())
        {
-           String sql="update Songs set title=? , artist=? , genre=? , time=? , path=? where id=?";
+           String sql="update Songs set title=? , artist=? , genre_id=? , time=? , path=? where id=?";
            PreparedStatement p=con.prepareStatement(sql);
            
            p.setString(1,song.getTitle());
