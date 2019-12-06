@@ -5,10 +5,36 @@
  */
 package mytunes.dal;
 
+import com.mpatric.mp3agic.InvalidDataException;
+import com.mpatric.mp3agic.Mp3File;
+import com.mpatric.mp3agic.UnsupportedTagException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 /**
  *
  * @author domin
  */
 public class Mp3TagReader {
+    Mp3File mp3file;
+    public Mp3TagReader(String filepath) {
+        try{
+            mp3file = new Mp3File(filepath);
+        } catch (IOException ex) {
+            Logger.getLogger(Mp3TagReader.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedTagException ex) {
+            Logger.getLogger(Mp3TagReader.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidDataException ex) {
+            Logger.getLogger(Mp3TagReader.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public int getLength(){
+        return 0;
+        
+    }    
+    
     
 }
