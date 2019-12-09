@@ -9,6 +9,7 @@ import com.mpatric.mp3agic.InvalidDataException;
 import com.mpatric.mp3agic.Mp3File;
 import com.mpatric.mp3agic.UnsupportedTagException;
 import java.io.IOException;
+import mytunes.dal.Mp3TagReaderInterface;
 import mytunes.dal.Mp3TagReaderV1;
 import mytunes.dal.Mp3TagReaderV2;
 
@@ -18,17 +19,28 @@ import mytunes.dal.Mp3TagReaderV2;
  * @author domin
  */
 public class Mp3TagReaderManager {
-    Object mptag;
-    String path;
+    Mp3TagReaderV1 mp3v1;
+    Mp3TagReaderV2 mp3v2;
+    Mp3TagReaderInterface tagReader;
     
     public Mp3TagReaderManager(String path) throws IOException, UnsupportedTagException, InvalidDataException {
-        Mp3File mp3 = new Mp3File(path);
+        Mp3File mp3 = new Mp3File(path); 
+        tagReader = getTagReader(mp3, path);
+    }
+    
+    private Mp3TagReaderInterface getTagReader(Mp3File mp3,String path){
         if(mp3.hasId3v1Tag()){
-            mptag = new Mp3TagReaderV1(path);
-        }else if(mp3.hasId3v2Tag()){
-            mptag = new Mp3TagReaderV2(path);
+        return new Mp3TagReaderV1(path);
         }else{
-            throw new UnsupportedTagException();
-        }   
+        return new Mp3TagReaderV2(path);
+        }
+    }
+       
+    public String getName(){
+        return tagReader.getName();
+    }
+    
+    public int getLength(){
+        return tagReader.getLength();
     }
 }
