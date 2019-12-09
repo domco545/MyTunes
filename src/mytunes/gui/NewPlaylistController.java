@@ -43,12 +43,12 @@ private ObservableList<Playlist> obsPlaylists = FXCollections.observableArrayLis
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
+    // Closes the window
     @FXML
     private void cancel(ActionEvent event) {
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
-
+    // Saves the new Playlist
     @FXML
     private void save(ActionEvent event) {
         if(txtNewPlaylist!=null)

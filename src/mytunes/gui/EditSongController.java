@@ -52,6 +52,7 @@ Song song;
     /**
      * Initializes the controller class.
      */
+    // Gets the items for the choicebox
     @Override
     public void initialize(URL url, ResourceBundle rb) {
       txtGenreInput.getItems().addAll(obsGenre);
@@ -68,11 +69,12 @@ Song song;
         
         
     }
+    // Closes the window
     @FXML
     private void handleCancelNewSong(ActionEvent event) {
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
-
+    // Saves the Changes
     @FXML
     private void handleSaveNewSong(ActionEvent event) {
         song.setTitle(txtNewSong.getText());

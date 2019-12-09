@@ -9,6 +9,7 @@ package mytunes.be;
  *
  * @author domin
  */
+//Song class, contains getters and setters and the method for converting the time 
 public class Song {
     private int id;
     private String title;

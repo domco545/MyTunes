@@ -34,7 +34,7 @@ public class SongDBDAO {
         ds.setServerName("10.176.111.31");
         ds.setPortNumber(1433);
 }
-   
+   // Seletcs everything from Song table
    public List<Song> getAllSongs()
    {
        try(Connection con=ds.getConnection()){
@@ -67,7 +67,7 @@ public class SongDBDAO {
         }
         return null;
    }
-
+// Inserts a new Song
    public void createSong(String title,String artist,Genre genre,int time,String path)
    {
      
@@ -90,7 +90,7 @@ public class SongDBDAO {
         }
        
    }
-   
+   // Updates a Song
    public void editSong(Song song)
    {
        try(Connection con=ds.getConnection())
@@ -114,7 +114,7 @@ public class SongDBDAO {
         }
        
    }
-   
+   // Deletes a Song by id
    public void deleteById(Song song)
    {
         try(Connection con=ds.getConnection())
@@ -133,7 +133,8 @@ public class SongDBDAO {
         }
    
    }
-   
+   // Method for the filter
+   // It searches a Song by the title and the artist
    public List<Song> querrySongs(String querry){
         try(Connection con=ds.getConnection()){
         List<Song> songs = new ArrayList();

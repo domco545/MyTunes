@@ -31,7 +31,7 @@ Playlist playlist;
     private Button cancelEditPlaylist;
     @FXML
     private Button saveEditPlaylist;
-
+    // When the new window for editing a playlist pops up it sets the current name of the playlist int the textfield
     public void acceptPlaylist(Playlist playlist){
         this.playlist = playlist;
         txtNewPlaylist.setText(playlist.getName());
@@ -44,12 +44,12 @@ Playlist playlist;
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
+    // Closes the new window
     @FXML
     private void cancel(ActionEvent event) {
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
-
+    // Saves the changes and closes the window
     @FXML
     private void update(ActionEvent event) {
         if(txtNewPlaylist!=null)

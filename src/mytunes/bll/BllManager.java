@@ -19,6 +19,7 @@ import mytunes.dal.SongDBDAO;
  *
  * @author domin
  */
+// Implements all the methods from the interface
 public class BllManager implements BllFacade {
     List<Genre> genreList = new ArrayList();
     List<Song> songList = new ArrayList();
