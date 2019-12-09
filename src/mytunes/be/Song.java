@@ -81,10 +81,18 @@ public class Song {
         this.time = time;
         this.path = path;
     }
+    
+    private String convertTimeToString(){
+        int seconds = (int) (time / 1000) % 60 ;
+        int minutes = (int) ((time / (1000*60)) % 60);
+        int hours   = (int) ((time / (1000*60*60)) % 24);
+        return hours+":"+minutes+":"+seconds;
+    
+    }
 
     @Override
     public String toString() {
-        return title + " " +  artist + " " + time;
+        return title + " " +  artist + " " + convertTimeToString();
     }
     
    

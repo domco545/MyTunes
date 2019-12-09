@@ -33,12 +33,9 @@ public class Mp3TagReader {
         }
     }
     
-    public String getLength(){
-       long time = mp3file.getLengthInMilliseconds();
-       int seconds = (int) (time / 1000) % 60 ;
-       int minutes = (int) ((time / (1000*60)) % 60);
-       int hours   = (int) ((time / (1000*60*60)) % 24);
-       return hours+":"+minutes+":"+seconds;
+    public int getLength(){
+       int time = (int) mp3file.getLengthInMilliseconds();
+       return time;
     }  
     
     public String getName(){
