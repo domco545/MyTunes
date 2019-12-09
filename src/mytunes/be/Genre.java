@@ -10,7 +10,7 @@ package mytunes.be;
  * @author domin
  */
 public class Genre {
-
+// Genre class, contains getters and setters
     public Genre(int id, String name) {
         this.id = id;
         this.name = name;

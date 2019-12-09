@@ -30,7 +30,7 @@ public class PlaylistDBDAO {
         ds.setServerName("10.176.111.31");
         ds.setPortNumber(1433);
     }
-
+// Method for creating a new Playlist
     public void createPlaylist(String name) {
         try ( Connection con = ds.getConnection()) {
             String sql = "INSERT INTO Playlist (name) values (?)";
@@ -45,7 +45,7 @@ public class PlaylistDBDAO {
         }
 
     }
-
+// Method for upedte a Playlist
     public void updatePlaylist(Playlist playlist) {
         try ( Connection con = ds.getConnection()) {
             String sql = "UPDATE Playlist SET name=? WHERE id=?";
@@ -60,7 +60,7 @@ public class PlaylistDBDAO {
             Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+// Delets a Playlist
     public void deletePlaylist(Playlist playlist) {
         try ( Connection con = ds.getConnection()) {
             String sql = "DELETE FROM Playlist WHERE id=?";
@@ -74,7 +74,9 @@ public class PlaylistDBDAO {
         Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
     }
   }
-
+// Loads the Playlists 
+    // Shows the totaltime and the number of song on a Playlists 
+    // Also orders them by the time and the number of songs
     public List<Playlist> loadPlaylists() {
         try ( Connection con = ds.getConnection()) {
             List<Playlist> pl = new ArrayList();
@@ -131,7 +133,7 @@ public class PlaylistDBDAO {
         }
         return null;
     }
-
+// Inserts a new Playlist
     public void addSongToPlaylist(int plId, int sId) {
         try ( Connection con = ds.getConnection()) {
             String sql = "INSERT INTO Songs_On_Playlist (playlist_id, song_id) values (?,?)";
@@ -145,7 +147,7 @@ public class PlaylistDBDAO {
             Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+// Deletes a song from a Playlist by id
     public void deleteSongOnPlaylist(int plId, int sId) {
         try (Connection con = ds.getConnection()) {
             String sql = "DELETE FROM Songs_On_Playlist WHERE playlist_id =? AND song_id=?";

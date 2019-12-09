@@ -8,6 +8,7 @@ import java.util.List;
  *
  * @author Martin
  */
+//Playlist class contains getters and setters
 public class Playlist{
     private int id;
     private String name;

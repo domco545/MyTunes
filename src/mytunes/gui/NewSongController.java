@@ -54,18 +54,19 @@ public class NewSongController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    // Fills up the choicebox
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
        txtGenreInput.getItems().addAll(obsGenre);
     }    
-
+    // Closes the window
     @FXML
     private void handleCancelNewSong(ActionEvent event) {
                 ((Node)(event.getSource())).getScene().getWindow().hide();
 
     }
-
+    // Saves the new song
     @FXML
     private void handleSaveNewSong(ActionEvent event) {
         if(txtNewSong!=null && txtNewArtist!=null && txtNewSongTime!=null && txtNewSongFile!=null)

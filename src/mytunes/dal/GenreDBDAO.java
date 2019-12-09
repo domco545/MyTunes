@@ -31,7 +31,7 @@ public class GenreDBDAO {
         ds.setServerName("10.176.111.31");
         ds.setPortNumber(1433);
     }
-    
+    // Selects everything from Genre table 
     public List<Genre> loadGenres()
     {
          try(Connection con = ds.getConnection()){

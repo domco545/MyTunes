@@ -127,7 +127,9 @@ public class AppController implements Initializable {
         init();
         
     }   
-
+    // Handles the button for New Playlist
+    // A new fxml file pops up after the click on the button
+    // After that the Newplaylist.fxml closes it reloads the Playlists
     @FXML
     private void newPlaylist(ActionEvent event){
         Parent root;
@@ -147,7 +149,7 @@ public class AppController implements Initializable {
             });
         }catch(IOException e){e.printStackTrace();}
     }
-
+    // On click event it deletes the selected song on a playlist, then it reloads them
     @FXML
     private void deleteSongOnPlaylist(ActionEvent event) {
         bllfacade.deleteSongOnPlaylist(
@@ -157,7 +159,7 @@ public class AppController implements Initializable {
         bllfacade.reloadPlaylists();
         init();
     }
-
+    // Deletes a playlist and then it reloads them
     @FXML
     private void deletePlaylist(ActionEvent event) {
         
@@ -165,7 +167,9 @@ public class AppController implements Initializable {
         bll.reloadPlaylists();
                     init();
     }
-
+    // Handles the event for the Edit Playlist button
+    // New window pops up
+    // After the event on the EditPlaylist.fxml it reloads the Playlists
     @FXML
     private void editPlaylist(ActionEvent event) {
         Parent root;
@@ -190,7 +194,9 @@ public class AppController implements Initializable {
         }catch(IOException e){e.printStackTrace();}
         
     }
-
+    // Handles the NewSong button
+    // New window pops up
+    // After the windowevent it reloads everything
     @FXML
     private void newSong(ActionEvent event) {
          Parent root; 
@@ -212,7 +218,8 @@ public class AppController implements Initializable {
             Logger.getLogger(AppController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    // Deletes the selected Song from everywhere
+    // Reloads the gui
     @FXML
     private void deleteSong(ActionEvent event) {
         bllfacade.deleteById(lstSongs.getSelectionModel().getSelectedItem());
@@ -220,7 +227,9 @@ public class AppController implements Initializable {
         bllfacade.reloadSongs();
         init();
     }
-
+    // Handles the New Song button
+    // New window pops up 
+    // After the window is closed it reloads the gui
     @FXML
     private void editSong(ActionEvent event) {
          Parent root;
@@ -246,13 +255,14 @@ public class AppController implements Initializable {
         }catch(IOException e){e.printStackTrace();}
         
     }
-
+    // Closes the Main gui
     @FXML
     private void closeWindow(ActionEvent event) {
         Platform.exit();
         System.exit(0);  
     }
-
+    // Handles the Filter button
+    // If there is text in the input and the button is clicked then it loads the data based on the querrySongs method
     @FXML
     private void handleFilter(ActionEvent event) {
         
@@ -288,7 +298,7 @@ public class AppController implements Initializable {
     @FXML
     private void nextSong(ActionEvent event) {
     }
-    
+    // Moves a song up on a current playlist if it is not the first one 
      @FXML
     private void moveSongUp(ActionEvent event) {
          
@@ -302,7 +312,7 @@ public class AppController implements Initializable {
         }
         
     }
-
+    // Moves a song down if it is not the last one on the playlist
     @FXML
     private void moveSongDown(ActionEvent event) {
         
@@ -317,14 +327,14 @@ public class AppController implements Initializable {
        
         }
     }
-
+    // It moves the selected song to the selected playlist and reloads them 
     @FXML
     private void moveSongToPlaylist(ActionEvent event) {
         bllfacade.addSongToPlaylist(selectedPlaylistId, selectedSongId);
         bllfacade.reloadPlaylists();
         init();
     }
-
+    // Fills up the observable list with the songs on the playlists
     @FXML
     private void fiilSOPm(MouseEvent event) {
         obsSOP= FXCollections.observableArrayList(lstPlaylists.getSelectionModel().getSelectedItem().getAllSongsOnPlaylist());
@@ -332,14 +342,14 @@ public class AppController implements Initializable {
         lstSOP.setItems(obsSOP);
         
     }
-
+    
     @FXML
     private void fiilSOPk(KeyEvent event) {
         obsSOP= FXCollections.observableArrayList(lstPlaylists.getSelectionModel().getSelectedItem().getAllSongsOnPlaylist());
         selectedPlaylistId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
         lstSOP.setItems(obsSOP);
     }
-    
+    // Sets the collumns of the tableviews
     public void init(){
         obsSongs = FXCollections.observableArrayList(bllfacade.getAllSongs());
         obsPlaylists = FXCollections.observableArrayList(bllfacade.getAllPlaylists());
