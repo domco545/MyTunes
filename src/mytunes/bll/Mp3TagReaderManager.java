@@ -19,8 +19,6 @@ import mytunes.dal.Mp3TagReaderV2;
  * @author domin
  */
 public class Mp3TagReaderManager {
-    Mp3TagReaderV1 mp3v1;
-    Mp3TagReaderV2 mp3v2;
     Mp3TagReaderInterface tagReader;
     
     public Mp3TagReaderManager(String path) throws IOException, UnsupportedTagException, InvalidDataException {
@@ -42,5 +40,13 @@ public class Mp3TagReaderManager {
     
     public int getLength(){
         return tagReader.getLength();
+    }
+    
+    public String getArtist(){
+        return tagReader.getArtist();
+    }
+    
+    public String getGenre(){
+        return tagReader.getGenre();
     }
 }

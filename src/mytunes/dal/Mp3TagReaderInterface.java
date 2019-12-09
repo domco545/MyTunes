@@ -14,5 +14,7 @@ import com.mpatric.mp3agic.Mp3File;
 public interface Mp3TagReaderInterface {
     public int getLength();
     public String getName();
+    public String getArtist();
+    public String getGenre();
     
 }
