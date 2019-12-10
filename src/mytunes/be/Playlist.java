@@ -52,8 +52,11 @@ public class Playlist{
         this.totalSongs = totalSongs;
     }
 
-    public int getTotalTime() {
-        return totalTime;
+    public String getTotalTime() {
+        int seconds = (int) (totalTime / 1000) % 60 ;
+        int minutes = (int) ((totalTime / (1000*60)) % 60);
+        int hours   = (int) ((totalTime / (1000*60*60)) % 24);
+        return hours+":"+minutes+":"+seconds;
     }
 
     public void setTotalTime(int totalTime) {

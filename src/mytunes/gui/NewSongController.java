@@ -5,13 +5,18 @@
  */
 package mytunes.gui;
 
+import com.mpatric.mp3agic.InvalidDataException;
+import com.mpatric.mp3agic.UnsupportedTagException;
 import java.io.File;
 import java.io.FileFilter;
+import java.io.IOException;
 import static java.lang.Integer.parseInt;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -32,6 +37,7 @@ import mytunes.be.Playlist;
 import mytunes.be.Song;
 import mytunes.bll.BllFacade;
 import mytunes.bll.BllManager;
+import mytunes.bll.Mp3TagReaderManager;
 
 /**
  * FXML Controller class
@@ -97,10 +103,18 @@ public class NewSongController implements Initializable {
             Path path = Paths.get(file.getAbsolutePath());
             Path pathbase = Paths.get("").toAbsolutePath();
             Path relative = pathbase.relativize(path);
-            System.out.println(relative.toString());
             
             if(relative.toString().contains("src\\songs\\")){
                 txtNewSongFile.setText(relative.toString());
+                try {
+                    populate(relative.toString());
+                } catch (IOException ex) {
+                    Logger.getLogger(NewSongController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (UnsupportedTagException ex) {
+                    Logger.getLogger(NewSongController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvalidDataException ex) {
+                    Logger.getLogger(NewSongController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 readyToSave = true;
             }else{
                 //didnt have time to do proper error displaying :D
@@ -118,6 +132,14 @@ public class NewSongController implements Initializable {
     @FXML
     private void show(MouseEvent event) {
          
+    }
+    
+    private void populate(String path) throws IOException, UnsupportedTagException, InvalidDataException{
+        Mp3TagReaderManager mp3m = new Mp3TagReaderManager(path);
+        txtNewSongTime.setText(Integer.toString(mp3m.getLength()));
+        txtNewArtist.setText(mp3m.getArtist());
+        txtNewSong.setText(mp3m.getName());
+    
     }
 
     

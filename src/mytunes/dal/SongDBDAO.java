@@ -101,7 +101,7 @@ public class SongDBDAO {
            p.setString(1,song.getTitle());
            p.setString(2, song.getArtist());
            p.setInt(3, song.getGenreId());
-           p.setInt(4,song.getTime());
+           p.setInt(4,song.getTimeInInt());
            p.setString(5,song.getPath());
            p.setInt(6,song.getId());
            

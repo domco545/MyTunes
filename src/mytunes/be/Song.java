@@ -54,7 +54,11 @@ public class Song {
         return genre.getName();
     }
 
-    public int getTime() {
+    public String getTime() {
+        return convertTimeToString();
+    }
+    
+    public int getTimeInInt(){
         return time;
     }
 

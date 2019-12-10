@@ -35,7 +35,10 @@ public class Mp3TagReaderManager {
     }
        
     public String getName(){
-        return tagReader.getName();
+        String name = tagReader.getName();
+        int index = name.lastIndexOf("\\");
+        String newName = name.substring(index+1,name.lastIndexOf("."));
+        return newName;
     }
     
     public int getLength(){
