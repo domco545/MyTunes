@@ -5,8 +5,12 @@
  */
 package mytunes.gui;
 
+import java.io.File;
+import java.io.FileFilter;
 import static java.lang.Integer.parseInt;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,9 +20,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.stage.FileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import mytunes.be.Genre;
 import mytunes.be.Playlist;
 import mytunes.be.Song;
@@ -34,6 +42,8 @@ public class NewSongController implements Initializable {
     BllFacade bllfacade = new BllManager(); 
     private ObservableList<Song> obsSongs = FXCollections.observableArrayList(bllfacade.getAllSongs());
       private ObservableList<Genre> obsGenre = FXCollections.observableArrayList(bllfacade.loadGenres());
+      private boolean readyToSave;
+      
     @FXML
     private TextField txtNewSong;
     @FXML
@@ -50,6 +60,8 @@ public class NewSongController implements Initializable {
     private TextField txtNewSongTime;
     @FXML
     private ChoiceBox<Genre> txtGenreInput;
+    @FXML
+    private Label lblError;
 
     /**
      * Initializes the controller class.
@@ -59,6 +71,8 @@ public class NewSongController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
        
        txtGenreInput.getItems().addAll(obsGenre);
+       txtNewSongFile.setDisable(true);
+       txtNewSongTime.setDisable(true);
     }    
     // Closes the window
     @FXML
@@ -69,13 +83,36 @@ public class NewSongController implements Initializable {
     // Saves the new song
     @FXML
     private void handleSaveNewSong(ActionEvent event) {
-        if(txtNewSong!=null && txtNewArtist!=null && txtNewSongTime!=null && txtNewSongFile!=null)
+        if(txtNewSong!=null && txtNewArtist!=null && txtNewSongTime!=null && txtNewSongFile!=null && readyToSave==true)
         bllfacade.createSong(txtNewSong.getText(),txtNewArtist.getText(),txtGenreInput.getSelectionModel().getSelectedItem(),parseInt(txtNewSongTime.getText()),txtNewSongFile.getText());
         handleCancelNewSong(event);
     }
 
     @FXML
     private void handleChoosePath(ActionEvent event) {
+        FileChooser fc = new FileChooser();
+        File file = fc.showOpenDialog(null);
+        
+        if(file.getAbsolutePath().endsWith(".mp3") || file.getAbsolutePath().endsWith(".wav")){
+            Path path = Paths.get(file.getAbsolutePath());
+            Path pathbase = Paths.get("").toAbsolutePath();
+            Path relative = pathbase.relativize(path);
+            System.out.println(relative.toString());
+            
+            if(relative.toString().contains("src\\songs\\")){
+                txtNewSongFile.setText(relative.toString());
+                readyToSave = true;
+            }else{
+                //didnt have time to do proper error displaying :D
+                lblError.setText("Songs have to be in src/songs/ directory");
+                readyToSave = false;
+            }
+        }else{
+            //didnt have time to do proper error displaying :D
+            lblError.setText("File format not supported");
+            readyToSave = false;
+        }
+        
     }
 
     @FXML

@@ -21,5 +21,6 @@
       <Button fx:id="btnChoose" layoutX="436.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleChoosePath" text="Choose.." />
       <TextField fx:id="txtNewSongTime" layoutX="195.0" layoutY="211.0" prefHeight="26.0" prefWidth="141.0" />
       <ChoiceBox fx:id="txtGenreInput" layoutX="191.0" layoutY="172.0" onMouseClicked="#show" prefWidth="150.0" />
+      <Label fx:id="lblError" layoutX="286.0" layoutY="284.0" />
    </children>
 </AnchorPane>
