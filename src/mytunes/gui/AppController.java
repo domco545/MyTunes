@@ -9,10 +9,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
+import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,6 +28,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -126,13 +129,21 @@ public class AppController implements Initializable {
     private Button btnNext;
     @FXML
     private Button addToPlaylist;
+    @FXML
+    private Slider sliderVolume;
     
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         init();
         
+        sliderVolume.valueProperty().addListener((ov) -> {
+            if (sliderVolume.isPressed()) {
+                player.setVolume(sliderVolume.getValue() / 100); 
+            }
+        });
     }   
+    
     // Handles the button for New Playlist
     // A new fxml file pops up after the click on the button
     // After that the Newplaylist.fxml closes it reloads the Playlists

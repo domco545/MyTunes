@@ -143,7 +143,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Slider layoutX="60.0" layoutY="115.0" prefHeight="14.0" prefWidth="173.0" />
+            <Slider fx:id="sliderVolume" layoutX="60.0" layoutY="115.0" prefHeight="14.0" prefWidth="173.0" value="50.0" />
             <Button fx:id="btnPrevious" layoutX="58.0" layoutY="57.0" mnemonicParsing="false" onAction="#previousSong" prefHeight="47.0" prefWidth="0.0" style="-fx-background-radius: 100;;">
                <graphic>
                   <ImageView fx:id="btnPreviousSong" fitHeight="39.0" fitWidth="39.0">
