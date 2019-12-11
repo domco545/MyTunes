@@ -38,6 +38,7 @@ import mytunes.be.Song;
 import mytunes.bll.BllFacade;
 import mytunes.bll.BllManager;
 import mytunes.bll.Mp3TagReaderManager;
+import mytunes.bll.WavReaderManager;
 
 /**
  * FXML Controller class
@@ -107,7 +108,8 @@ public class NewSongController implements Initializable {
             if(relative.toString().contains("src\\songs\\")){
                 txtNewSongFile.setText(relative.toString());
                 try {
-                    populate(relative.toString());
+                    if(file.getAbsolutePath().endsWith(".mp3")){populateMp3(relative.toString());}
+                    else{populateWav(relative.toString());}
                 } catch (IOException ex) {
                     Logger.getLogger(NewSongController.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (UnsupportedTagException ex) {
@@ -134,11 +136,16 @@ public class NewSongController implements Initializable {
          
     }
     
-    private void populate(String path) throws IOException, UnsupportedTagException, InvalidDataException{
+    private void populateMp3(String path) throws IOException, UnsupportedTagException, InvalidDataException{
         Mp3TagReaderManager mp3m = new Mp3TagReaderManager(path);
         txtNewSongTime.setText(Integer.toString(mp3m.getLength()));
         txtNewArtist.setText(mp3m.getArtist());
         txtNewSong.setText(mp3m.getName());
+    }
+    
+    private void populateWav(String path){
+        WavReaderManager wavm = new WavReaderManager(path);
+        txtNewSongTime.setText(Integer.toString(wavm.getLength()));
     
     }
 
