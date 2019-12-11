@@ -36,6 +36,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import mytunes.be.Playlist;
@@ -58,6 +60,10 @@ public class AppController implements Initializable {
     private int selectedPlaylistId;
     private int selectedSongId;
     private boolean inSearch;
+    private Media media;
+    private MediaPlayer player;
+    private boolean isPlayingSong;
+    
     @FXML
     private Button btnPlay;
     @FXML
@@ -292,7 +298,12 @@ public class AppController implements Initializable {
 
     @FXML
     private void playSong(ActionEvent event) {
-
+        if(isPlayingSong){
+            player.stop();
+        }
+        else{
+            player.play();
+        }   
     }
 
     @FXML
@@ -375,6 +386,11 @@ public class AppController implements Initializable {
     @FXML
     private void selectSongM(MouseEvent event) {
         selectedSongId = lstSongs.getSelectionModel().getSelectedItem().getId();
+    }
+    
+    private void setSong(String path){
+        media = new Media(path);
+        player = new MediaPlayer(media);
     }
 }
     
