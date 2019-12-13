@@ -47,7 +47,7 @@ import mytunes.bll.WavReaderManager;
  */
 public class NewSongController implements Initializable {
     BllFacade bllfacade = new BllManager(); 
-    private ObservableList<Song> obsSongs = FXCollections.observableArrayList(bllfacade.getAllSongs());
+    //private ObservableList<Song> obsSongs = FXCollections.observableArrayList(bllfacade.getAllSongs());
       private ObservableList<Genre> obsGenre = FXCollections.observableArrayList(bllfacade.loadGenres());
       private boolean readyToSave;
       
@@ -139,7 +139,7 @@ public class NewSongController implements Initializable {
     private void populateMp3(String path) throws IOException, UnsupportedTagException, InvalidDataException{
         Mp3TagReaderManager mp3m = new Mp3TagReaderManager(path);
         txtNewSongTime.setText(Integer.toString(mp3m.getLength()));
-        txtNewArtist.setText(mp3m.getArtist());
+        //txtNewArtist.setText(mp3m.getArtist());
         txtNewSong.setText(mp3m.getName());
     }
     

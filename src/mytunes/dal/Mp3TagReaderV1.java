@@ -47,7 +47,11 @@ public class Mp3TagReaderV1 implements Mp3TagReaderInterface{
 
     @Override
     public String getArtist() {
-        return mp3file.getId3v1Tag().getArtist();
+        if(mp3file.getId3v1Tag().getArtist() == null){
+            return "";
+        }else{
+            return mp3file.getId3v1Tag().getArtist();
+        }
     }
 
     @Override

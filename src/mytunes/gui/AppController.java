@@ -5,8 +5,10 @@
  */
 package mytunes.gui;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -153,6 +155,7 @@ public class AppController implements Initializable {
         @Override
         public void changed(ObservableValue<? extends Song> observable, Song oldValue, Song newValue) {
              setSong(newValue.getPath(),newValue.getTitle());
+             System.err.println();
             }
         });
     }   
@@ -415,9 +418,11 @@ public class AppController implements Initializable {
     }
     
     private void setSong(String path, String title){
-        media = new Media("file:/"+path);
+        media = new Media(new File(path).toURI().toString());
         player = new MediaPlayer(media);
         lblIsPlaying.setText(title);
+        player.play();
+        isPlayingSong = true;
     }
 }
     
