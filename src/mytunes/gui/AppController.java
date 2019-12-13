@@ -7,14 +7,13 @@ package mytunes.gui;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,7 +26,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -37,8 +35,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -137,9 +133,26 @@ public class AppController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         init();
         
+        //volume slider change listener
         sliderVolume.valueProperty().addListener((ov) -> {
             if (sliderVolume.isPressed()) {
                 player.setVolume(sliderVolume.getValue() / 100); 
+            }
+        });
+        
+        //song on playlist change listener
+        lstSOP.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Song>() {
+        @Override
+        public void changed(ObservableValue<? extends Song> observable, Song oldValue, Song newValue) {
+             setSong(newValue.getPath(),newValue.getTitle());
+            }
+        });
+        
+        //songs change listener
+        lstSongs.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Song>() {
+        @Override
+        public void changed(ObservableValue<? extends Song> observable, Song oldValue, Song newValue) {
+             setSong(newValue.getPath(),newValue.getTitle());
             }
         });
     }   
@@ -311,9 +324,11 @@ public class AppController implements Initializable {
     private void playSong(ActionEvent event) {
         if(isPlayingSong){
             player.stop();
+            isPlayingSong = false;
         }
         else{
             player.play();
+            isPlayingSong = true;
         }   
     }
 
@@ -399,9 +414,10 @@ public class AppController implements Initializable {
         selectedSongId = lstSongs.getSelectionModel().getSelectedItem().getId();
     }
     
-    private void setSong(String path){
-        media = new Media(path);
+    private void setSong(String path, String title){
+        media = new Media("file:/"+path);
         player = new MediaPlayer(media);
+        lblIsPlaying.setText(title);
     }
 }
     
