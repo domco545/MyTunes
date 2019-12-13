@@ -90,9 +90,12 @@ public class NewSongController implements Initializable {
     // Saves the new song
     @FXML
     private void handleSaveNewSong(ActionEvent event) {
-        if(txtNewSong!=null && txtNewArtist!=null && txtNewSongTime!=null && txtNewSongFile!=null && readyToSave==true)
+        if(txtNewSong!=null && txtNewArtist!=null && txtNewSongTime!=null && txtNewSongFile!=null && txtGenreInput.getSelectionModel().getSelectedItem() !=null &&readyToSave==true){
         bllfacade.createSong(txtNewSong.getText(),txtNewArtist.getText(),txtGenreInput.getSelectionModel().getSelectedItem(),parseInt(txtNewSongTime.getText()),txtNewSongFile.getText());
         handleCancelNewSong(event);
+        }else{
+            lblError.setText("every field need to be filled");
+        }
     }
 
     @FXML
