@@ -45,7 +45,7 @@ public class PlaylistDBDAO {
         }
 
     }
-// Method for upedte a Playlist
+// Method for update a Playlist
     public void updatePlaylist(Playlist playlist) {
         try ( Connection con = ds.getConnection()) {
             String sql = "UPDATE Playlist SET name=? WHERE id=?";
@@ -60,7 +60,7 @@ public class PlaylistDBDAO {
             Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-// Delets a Playlist
+// Deletes a Playlist
     public void deletePlaylist(Playlist playlist) {
         try ( Connection con = ds.getConnection()) {
             String sql = "DELETE FROM Playlist WHERE id=?";
@@ -101,6 +101,28 @@ public class PlaylistDBDAO {
         return null;
     }
 
+   /* public int getNextAvailablePosition()
+    {
+        try(Connection con = ds.getConnection()){
+            int nextpos=0;
+            String sql="SELECT TOP 1 Songs_On_Playlist.position DES FROM Songs_On_Playlist";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+             
+            while(rs.next())
+            {
+                nextpos+=rs.getInt("position")+1;
+            }
+            return nextpos;
+        }
+        
+       catch (SQLServerException ex) {
+            Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }*/
     public List<Playlist> getAllPlaylists() {
         List<Playlist> pl = loadPlaylists();
 
