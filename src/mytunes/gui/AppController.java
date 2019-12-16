@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -64,6 +65,8 @@ public class AppController implements Initializable {
     private Media media;
     private MediaPlayer player;
     private boolean isPlayingSong;
+    private Image imageC = new Image(getClass().getResourceAsStream("/icons/button1.png"));
+    private Image imageF = new Image(getClass().getResourceAsStream("/icons/button4.png"));
     
     @FXML
     private Button btnPlay;
@@ -154,11 +157,14 @@ public class AppController implements Initializable {
         lstSongs.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Song>() {
         @Override
         public void changed(ObservableValue<? extends Song> observable, Song oldValue, Song newValue) {
-             setSong(newValue.getPath(),newValue.getTitle());
-             System.err.println();
+             setSong(newValue.getPath(),newValue.getTitle());             
             }
         });
-    }   
+        
+        player.setOnEndOfMedia(() -> {
+            nextSong();
+        });
+    }
     
     // Handles the button for New Playlist
     // A new fxml file pops up after the click on the button
@@ -298,10 +304,6 @@ public class AppController implements Initializable {
     // If there is text in the input and the button is clicked then it loads the data based on the querrySongs method
     @FXML
     private void handleFilter(ActionEvent event) {
-        
-        Image imageC = new Image(getClass().getResourceAsStream("/icons/button1.png"));
-        Image imageF = new Image(getClass().getResourceAsStream("/icons/button4.png"));
-
         if(!inSearch){
         btnFind.setImage(imageC);
         //query here
@@ -321,6 +323,7 @@ public class AppController implements Initializable {
 
     @FXML
     private void previousSong(ActionEvent event) {
+        previousSong();
     }
 
     @FXML
@@ -337,6 +340,7 @@ public class AppController implements Initializable {
 
     @FXML
     private void nextSong(ActionEvent event) {
+        nextSong();
     }
     // Moves a song up on a current playlist if it is not the first one 
      @FXML
@@ -423,6 +427,22 @@ public class AppController implements Initializable {
         lblIsPlaying.setText(title);
         player.play();
         isPlayingSong = true;
+    }
+    
+    private void nextSong(){
+        if(lstSongs.getSelectionModel().selectedItemProperty() != null){
+           lstSongs.getSelectionModel().selectNext();
+        }else{
+           lstSOP.getSelectionModel().selectNext();
+        }
+    }
+    
+    private void previousSong(){
+        if(lstSongs.getSelectionModel().selectedItemProperty() != null){
+           lstSongs.getSelectionModel().selectPrevious();
+        }else{
+           lstSOP.getSelectionModel().selectPrevious();
+        }
     }
 }
     
