@@ -132,6 +132,8 @@ public class AppController implements Initializable {
     private Button addToPlaylist;
     @FXML
     private Slider sliderVolume;
+    @FXML
+    private ImageView btnPause;
     
 
     @Override
