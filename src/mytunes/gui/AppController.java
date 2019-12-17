@@ -65,8 +65,11 @@ public class AppController implements Initializable {
     private Media media;
     private MediaPlayer player;
     private boolean isPlayingSong;
-    private Image imageC = new Image(getClass().getResourceAsStream("/icons/button1.png"));
+    private Image imageC = new Image(getClass().getResourceAsStream("/icons/delete.png"));
     private Image imageF = new Image(getClass().getResourceAsStream("/icons/button4.png"));
+    private Image imageP = new Image(getClass().getResourceAsStream("/icons/button1.png"));
+    private Image imageS = new Image(getClass().getResourceAsStream("/icons/pause.png"));
+
     
     @FXML
     private Button btnPlay;
@@ -133,7 +136,7 @@ public class AppController implements Initializable {
     @FXML
     private Slider sliderVolume;
     @FXML
-    private ImageView btnPause;
+    private ImageView btnPlayImg;
     
 
     @Override
@@ -163,9 +166,9 @@ public class AppController implements Initializable {
             }
         });
         
-        player.setOnEndOfMedia(() -> {
-            nextSong();
-        });
+//        player.setOnEndOfMedia(() -> {
+//            nextSong();
+//        });
     }
     
     // Handles the button for New Playlist
@@ -333,10 +336,12 @@ public class AppController implements Initializable {
         if(isPlayingSong){
             player.stop();
             isPlayingSong = false;
+            btnPlayImg.setImage(imageP);
         }
         else{
             player.play();
             isPlayingSong = true;
+            btnPlayImg.setImage(imageS);
         }   
     }
 

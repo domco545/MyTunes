@@ -155,7 +155,7 @@
             </Button>
             <Button fx:id="btnPlay" layoutX="120.0" layoutY="44.0" mnemonicParsing="false" onAction="#playSong" prefHeight="60.0" prefWidth="60.0" style="-fx-background-radius: 100;;">
                <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="44.0">
+                  <ImageView fx:id="btnPlayImg" fitHeight="40.0" fitWidth="44.0">
                      <image>
                         <Image url="@../../icons/button1.png" />
                      </image>
@@ -201,11 +201,6 @@
                </font>
             </Text>
             <Label fx:id="lblIsPlaying" layoutX="384.0" layoutY="64.0" />
-            <ImageView fx:id="btnPause" fitHeight="40.0" fitWidth="47.0" layoutX="222.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../icons/pause.png" />
-               </image>
-            </ImageView>
          </children>
     </AnchorPane>
       <ListView prefHeight="375.0" prefWidth="172.0" />
