@@ -65,6 +65,7 @@ public class AppController implements Initializable {
     private Media media;
     private MediaPlayer player;
     private boolean isPlayingSong;
+    private boolean fromSongs;
     private Image imageC = new Image(getClass().getResourceAsStream("/icons/delete.png"));
     private Image imageF = new Image(getClass().getResourceAsStream("/icons/button4.png"));
     private Image imageP = new Image(getClass().getResourceAsStream("/icons/button1.png"));
@@ -155,6 +156,7 @@ public class AppController implements Initializable {
         @Override
         public void changed(ObservableValue<? extends Song> observable, Song oldValue, Song newValue) {
              setSong(newValue.getPath(),newValue.getTitle());
+             fromSongs = false;
             }
         });
         
@@ -162,7 +164,8 @@ public class AppController implements Initializable {
         lstSongs.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Song>() {
         @Override
         public void changed(ObservableValue<? extends Song> observable, Song oldValue, Song newValue) {
-             setSong(newValue.getPath(),newValue.getTitle());             
+             setSong(newValue.getPath(),newValue.getTitle());
+             fromSongs = true;
             }
         });
         
@@ -434,10 +437,11 @@ public class AppController implements Initializable {
         lblIsPlaying.setText(title);
         player.play();
         isPlayingSong = true;
+        btnPlayImg.setImage(imageS);
     }
     
     private void nextSong(){
-        if(lstSongs.getSelectionModel().selectedItemProperty() != null){
+        if(fromSongs == true){
            lstSongs.getSelectionModel().selectNext();
         }else{
            lstSOP.getSelectionModel().selectNext();
@@ -445,7 +449,7 @@ public class AppController implements Initializable {
     }
     
     private void previousSong(){
-        if(lstSongs.getSelectionModel().selectedItemProperty() != null){
+        if(fromSongs == true){
            lstSongs.getSelectionModel().selectPrevious();
         }else{
            lstSOP.getSelectionModel().selectPrevious();
