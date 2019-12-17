@@ -171,4 +171,65 @@ public class PlaylistDBDAO {
             Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void songUp(int plId, int songId, int position){
+        //1 is smallest position song can have
+        if(position == 1){
+            return;
+        }
+            try (Connection con = ds.getConnection()) {
+            String sql = "UPDATE Songs_On_Playlist\n" +
+                         "SET position = CASE WHEN position = ? THEN ? \n" +
+                         "WHEN position = ? THEN ?\n" +
+                         "Where playlist_id = ? AND song_id=?";
+            
+            PreparedStatement p = con.prepareStatement(sql);
+            p.setInt(1, position);
+            p.setInt(2, position-1);
+            p.setInt(3, position-1);
+            p.setInt(4, position);
+            p.setInt(5, plId);
+            p.setInt(6, songId);
+            p.executeUpdate();
+        } catch (SQLServerException ex) {
+            Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void songDown(int plId, int songId, int position){
+        try (Connection con = ds.getConnection()) {
+            String sql1 = "SELECT MAX(position) WHERE playlist_id = ?";
+            PreparedStatement p1 = con.prepareStatement(sql1);
+            p1.setInt(1, plId);
+            ResultSet rs = p1.executeQuery();
+            int maxpos = 0;
+            
+            while(rs.next()){
+                maxpos = rs.getInt("position");
+            }
+            if(position+1 > maxpos){
+                return;
+            }
+            
+            String sql = "UPDATE Songs_On_Playlist\n" +
+                         "SET position = CASE WHEN position = ? THEN ? \n" +
+                         "WHEN position = ? THEN ?\n" +
+                         "Where playlist_id = ? AND song_id=?";
+            
+            PreparedStatement p = con.prepareStatement(sql);
+            p.setInt(1, position);
+            p.setInt(2, position+1);
+            p.setInt(3, position+1);
+            p.setInt(4, position);
+            p.setInt(5, plId);
+            p.setInt(6, songId);
+            p.executeUpdate();
+        } catch (SQLServerException ex) {
+            Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

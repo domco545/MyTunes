@@ -118,6 +118,15 @@ public class BllManager implements BllFacade {
     public List<Song> querrySongs(String querry) {
         return sdb.querrySongs(querry);
     }
-    
+
+    @Override
+    public void songUp(int plId, int songId, int position) {
+        pldb.songUp(plId, songId, position);
+    }
+
+    @Override
+    public void songDown(int plId, int songId, int position) {
+        pldb.songDown(plId, songId, position);
+    }
 }
  

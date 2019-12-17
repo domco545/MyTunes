@@ -354,31 +354,16 @@ public class AppController implements Initializable {
     // Moves a song up on a current playlist if it is not the first one 
      @FXML
     private void moveSongUp(ActionEvent event) {
-         
-        Song songToMove = lstSOP.getSelectionModel().getSelectedItem();
-        int index = lstSOP.getSelectionModel().getSelectedIndex();
-        Song songAbove = lstSOP.getItems().get(index-1);
-        
-        if(index > 0){
-        lstSOP.getItems().set(index-1, songToMove);
-        lstSOP.getItems().set(index, songAbove);
-        }
-        
+        Song s = lstSOP.getSelectionModel().getSelectedItem();
+        int plId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
+         bllfacade.songUp(plId, s.getId(), s.getPosition());
     }
     // Moves a song down if it is not the last one on the playlist
     @FXML
     private void moveSongDown(ActionEvent event) {
-        
-        int index = lstSOP.getSelectionModel().getSelectedIndex();
-        Song songToMove = lstSOP.getSelectionModel().getSelectedItem();
-        Song songBelow = lstSOP.getItems().get(index+1);
-        
-        int size = obsSOP.size();
-        if(index < size){
-        lstSOP.getItems().set(index+1, songToMove);
-        lstSOP.getItems().set(index, songBelow);
-       
-        }
+        Song s = lstSOP.getSelectionModel().getSelectedItem();
+        int plId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
+         bllfacade.songDown(plId, s.getId(), s.getPosition());
     }
     // It moves the selected song to the selected playlist and reloads them 
     @FXML
