@@ -101,29 +101,6 @@ public class PlaylistDBDAO {
         return null;
     }
 
-   public int getNextAvailablePosition(int PlId)
-    {
-        try(Connection con = ds.getConnection()){
-            int nextpos=0;
-            String sql2="SELECT TOP 1 position FROM Songs_On_Playlist WHERE playlist_id=?";
-            PreparedStatement p2 = con.prepareStatement(sql2);
-            p2.setInt(1, PlId);
-            ResultSet rs2 = p2.executeQuery(sql2);
-            
-            while(rs2.next())
-            {
-                nextpos=rs2.getInt("position");
-            }
-            return nextpos+1;
-        }
-        
-       catch (SQLServerException ex) {
-            Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return -1;
-    }
     public List<Playlist> getAllPlaylists() {
         List<Playlist> pl = loadPlaylists();
 
