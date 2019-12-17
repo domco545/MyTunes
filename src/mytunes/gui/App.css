@@ -1,0 +1,63 @@
+/* 
+    Author     : domin
+*/
+
+.root{
+    -fx-background-color: #263238;
+    
+}
+
+.text{
+    -fx-fill: #43a047;
+    -fx-font: 13px Arial;
+    -fx-font-weight: bold;
+}
+
+.button{
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-background-color: #4f5b62;
+}
+
+.button-radio{
+    -fx-background-radius: 100px;
+    -fx-border-radius: 100px;
+}
+
+.list-view{
+   -fx-background-color: #4f5b62;
+}
+
+.text-field{
+    -fx-background-color: #4f5b62;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+.slider .track{
+    -fx-background-color: #4f5b62;
+}
+
+.slider .thumb{
+    -fx-background-color: #000a12;
+}
+
+.table-view{
+    -fx-background-color: #4f5b62;
+}
+
+.table-view .column-header-background{
+   -fx-background-color: #000a12;
+}
+
+.table-view .column-header{
+    -fx-background-color: #000a12;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: #4f5b62;
+}
+
+.menu-bar{
+    -fx-background-color: #000a12;
+}

@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.AppController">
+<VBox prefHeight="400.0" prefWidth="640.0" stylesheets="@App.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.AppController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -94,17 +94,17 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Text layoutX="330.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Songs on playlist">
+            <Text layoutX="330.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Songs on playlist">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text layoutX="58.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Playlists">
+            <Text layoutX="58.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Playlists">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text layoutX="580.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Songs">
+            <Text layoutX="580.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Songs">
                <font>
                   <Font size="14.0" />
                </font>
@@ -125,7 +125,7 @@
                   <TableColumn fx:id="ClTime" prefWidth="75.0" text="Time" />
                </columns>
             </TableView>
-            <Text layoutX="638.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filter: ">
+            <Text layoutX="638.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Filter: ">
                <font>
                   <Font size="14.0" />
                </font>
@@ -144,7 +144,7 @@
                </graphic>
             </Button>
             <Slider fx:id="sliderVolume" layoutX="60.0" layoutY="115.0" prefHeight="14.0" prefWidth="173.0" value="50.0" />
-            <Button fx:id="btnPrevious" layoutX="58.0" layoutY="57.0" mnemonicParsing="false" onAction="#previousSong" prefHeight="47.0" prefWidth="0.0" style="-fx-background-radius: 100;;">
+            <Button fx:id="btnPrevious" layoutX="58.0" layoutY="57.0" mnemonicParsing="false" onAction="#previousSong" prefHeight="47.0" prefWidth="0.0" style="-fx-background-radius: 100;;" styleClass="button-radio">
                <graphic>
                   <ImageView fx:id="btnPreviousSong" fitHeight="39.0" fitWidth="39.0">
                      <image>
@@ -153,7 +153,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnPlay" layoutX="120.0" layoutY="44.0" mnemonicParsing="false" onAction="#playSong" prefHeight="60.0" prefWidth="60.0" style="-fx-background-radius: 100;;">
+            <Button fx:id="btnPlay" layoutX="120.0" layoutY="44.0" mnemonicParsing="false" onAction="#playSong" prefHeight="60.0" prefWidth="60.0" style="-fx-background-radius: 100;;" styleClass="button-radio">
                <graphic>
                   <ImageView fx:id="btnPlayImg" fitHeight="40.0" fitWidth="44.0">
                      <image>
@@ -162,7 +162,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnNext" layoutX="187.0" layoutY="57.0" mnemonicParsing="false" onAction="#nextSong" prefHeight="30.0" prefWidth="38.0" style="-fx-background-radius: 100;;">
+            <Button fx:id="btnNext" layoutX="187.0" layoutY="57.0" mnemonicParsing="false" onAction="#nextSong" prefHeight="30.0" prefWidth="38.0" styleClass="button-radio">
                <graphic>
                   <ImageView fx:id="btnNextSong" fitHeight="39.0" fitWidth="39.0">
                      <image>
@@ -195,12 +195,12 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Text layoutX="476.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="... is playing">
+            <Text layoutX="476.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="... is playing">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Label fx:id="lblIsPlaying" layoutX="384.0" layoutY="64.0" />
+            <Label fx:id="lblIsPlaying" layoutX="384.0" layoutY="64.0" styleClass="text" />
          </children>
     </AnchorPane>
       <ListView prefHeight="375.0" prefWidth="172.0" />
