@@ -163,9 +163,9 @@ public class AppController implements Initializable {
             }
         });
         
-        player.setOnEndOfMedia(() -> {
-            nextSong();
-        });
+        //player.setOnEndOfMedia(() -> {
+        //    nextSong();
+        //});
     }
     
     // Handles the button for New Playlist
