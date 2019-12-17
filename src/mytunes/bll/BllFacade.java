@@ -27,7 +27,7 @@ public interface BllFacade {
     public void updatePlaylist(Playlist playlist);
     public void deletePlaylist(Playlist playlist);
     public void addSongToPlaylist(int plId, int sId);
-    public void deleteSongOnPlaylist(int plId, int sId);
+    public void deleteSongOnPlaylist(int plId, int sId, int position);
     public void reloadPlaylists();
     public void reloadSongs();
     public void reloadGenre();

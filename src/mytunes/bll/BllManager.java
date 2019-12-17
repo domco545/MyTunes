@@ -106,8 +106,8 @@ public class BllManager implements BllFacade {
         pldb.addSongToPlaylist(plId, sId);
     }
 
-    public void deleteSongOnPlaylist(int plId, int sId){
-        pldb.deleteSongOnPlaylist(plId, sId);
+    public void deleteSongOnPlaylist(int plId, int sId, int position){
+        pldb.deleteSongOnPlaylist(plId, sId, position);
     }
     @Override
     public void reloadSongs() {

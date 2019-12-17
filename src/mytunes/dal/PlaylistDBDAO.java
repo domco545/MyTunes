@@ -105,16 +105,16 @@ public class PlaylistDBDAO {
     {
         try(Connection con = ds.getConnection()){
             int nextpos=0;
-            String sql="SELECT TOP 1 Songs_On_Playlist.position DES FROM Songs_On_Playlist WHERE playlist_id=?";
-            PreparedStatement p = con.prepareStatement(sql);
-            p.setInt(1, PlId);
-            ResultSet rs = p.executeQuery(sql);
+            String sql2="SELECT TOP 1 position FROM Songs_On_Playlist WHERE playlist_id=?";
+            PreparedStatement p2 = con.prepareStatement(sql2);
+            p2.setInt(1, PlId);
+            ResultSet rs2 = p2.executeQuery(sql2);
             
-            while(rs.next())
+            while(rs2.next())
             {
-                nextpos+=rs.getInt("position")+1;
+                nextpos=rs2.getInt("position");
             }
-            return nextpos;
+            return nextpos+1;
         }
         
        catch (SQLServerException ex) {
@@ -122,7 +122,7 @@ public class PlaylistDBDAO {
         } catch (SQLException ex) {
             Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return 0;
+        return -1;
     }
     public List<Playlist> getAllPlaylists() {
         List<Playlist> pl = loadPlaylists();
@@ -133,17 +133,20 @@ public class PlaylistDBDAO {
                 List<Song> songs = new ArrayList();
                 int id = playlist.getId();
 
-                String sql = "SELECT Songs_On_Playlist.song_id, Songs.title, Songs.artist, Songs.genre_id, Songs.[time], Songs.[path], Genre.id AS genre_table_id, Genre.name\n"
+                String sql = "SELECT Songs_On_Playlist.song_id, Songs_On_Playlist.position, Songs.title, Songs.artist, Songs.genre_id, Songs.[time], Songs.[path], Genre.id AS genre_table_id, Genre.name\n"
                         + "FROM Songs_On_Playlist\n"
                         + "LEFT JOIN Songs ON Songs_On_Playlist.song_id = Songs.id\n"
                         + "LEFT JOIN Genre ON Songs.genre_id = Genre.id\n"
-                        + "Where Songs_On_Playlist.playlist_id=?";
+                        + "Where Songs_On_Playlist.playlist_id=?\n"
+                        + "ORDER BY Songs_On_Playlist.position";
                 PreparedStatement pstmt = con.prepareStatement(sql);
                 pstmt.setInt(1, id);
                 ResultSet rs = pstmt.executeQuery();
 
                 while (rs.next()) {
-                    songs.add(new Song(rs.getInt("song_id"), rs.getString("title"), rs.getString("artist"), new Genre(rs.getInt("genre_table_id"), rs.getString("name")), rs.getInt("time"), rs.getString("path")));
+                    Song s = new Song(rs.getInt("song_id"), rs.getString("title"), rs.getString("artist"), new Genre(rs.getInt("genre_table_id"), rs.getString("name")), rs.getInt("time"), rs.getString("path"));
+                    s.setPosition(rs.getInt("position"));
+                    songs.add(s);
                 }
                 playlist.addSongs(songs);
 
@@ -157,13 +160,18 @@ public class PlaylistDBDAO {
         return null;
     }
 // Inserts a new Playlist
+// using subquerry to get next position for song
     public void addSongToPlaylist(int plId, int sId) {
         try ( Connection con = ds.getConnection()) {
-            String sql = "INSERT INTO Songs_On_Playlist (playlist_id, song_id, position) values (?,?,?)";
+            
+            String sql = "insert into Songs_On_Playlist(position, playlist_id, song_id)\n" +
+                         "select \n" +
+                         "MAX(position+1) AS position,?,?\n" +
+                         "from Songs_On_Playlist where playlist_id=?;";
             PreparedStatement p = con.prepareStatement(sql);
             p.setInt(1, plId);
             p.setInt(2, sId);
-            p.setInt(3,getNextAvailablePosition(plId));
+            p.setInt(3, plId);
             p.executeUpdate();
         } catch (SQLServerException ex) {
             Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -172,12 +180,13 @@ public class PlaylistDBDAO {
         }
     }
 // Deletes a song from a Playlist by id
-    public void deleteSongOnPlaylist(int plId, int sId) {
+    public void deleteSongOnPlaylist(int plId, int sId, int position) {
         try (Connection con = ds.getConnection()) {
-            String sql = "DELETE FROM Songs_On_Playlist WHERE playlist_id =? AND song_id=?";
+            String sql = "DELETE FROM Songs_On_Playlist WHERE playlist_id =? AND song_id=? AND position = ?";
             PreparedStatement p = con.prepareStatement(sql);
             p.setInt(1, plId);
             p.setInt(2, sId);
+            p.setInt(3, position);
             p.executeUpdate();
         } catch (SQLServerException ex) {
             Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);

@@ -17,6 +17,7 @@ public class Song {
     private Genre genre;
     private int time;
     private String path;
+    private int position;
 
     public void setId(int id) {
         this.id = id;
@@ -40,6 +41,10 @@ public class Song {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     public String getTitle() {
@@ -73,6 +78,11 @@ public class Song {
     public int getGenreId(){
         return genre.getId();
     }
+
+    public int getPosition() {
+        return position;
+    }
+   
     public void setGenreName(String name)
     {
         genre.setName(name);

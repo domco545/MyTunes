@@ -199,10 +199,9 @@ public class AppController implements Initializable {
     // On click event it deletes the selected song on a playlist, then it reloads them
     @FXML
     private void deleteSongOnPlaylist(ActionEvent event) {
-        bllfacade.deleteSongOnPlaylist(
-                lstPlaylists.getSelectionModel().getSelectedItem().getId(), 
-                lstSOP.getSelectionModel().getSelectedItem().getId()
-        );
+        Song s = lstSOP.getSelectionModel().getSelectedItem();
+        int plId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
+        bllfacade.deleteSongOnPlaylist(plId,s.getId(),s.getPosition());
         bllfacade.reloadPlaylists();
         init();
     }
