@@ -6,20 +6,20 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.controller.EditSongController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@EditSong.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.controller.EditSongController">
    <children>
-      <TextField fx:id="txtNewSong" layoutX="188.0" layoutY="106.0" />
-      <TextField fx:id="txtNewArtist" layoutX="188.0" layoutY="141.0" />
-      <Label layoutX="155.0" layoutY="110.0" prefHeight="18.0" prefWidth="46.0" text="Title :" />
-      <Label layoutX="153.0" layoutY="145.0" text="Artist :" />
-      <Label layoutX="132.0" layoutY="175.0" prefHeight="18.0" prefWidth="56.0" text="Category :" />
-      <Label layoutX="154.0" layoutY="215.0" text="Time :" />
-      <Label layoutX="165.0" layoutY="254.0" prefHeight="18.0" prefWidth="26.0" text="File :" />
-      <TextField fx:id="txtNewSongFile" layoutX="195.0" layoutY="250.0" prefHeight="26.0" prefWidth="230.0" />
+      <TextField fx:id="txtNewSong" layoutX="196.0" layoutY="107.0" />
+      <TextField fx:id="txtNewArtist" layoutX="196.0" layoutY="141.0" />
+      <Label layoutX="141.0" layoutY="110.0" prefHeight="18.0" prefWidth="46.0" text="Title :" />
+      <Label layoutX="137.0" layoutY="145.0" text="Artist :" />
+      <Label layoutX="113.0" layoutY="175.0" prefHeight="18.0" prefWidth="76.0" text="Category :" />
+      <Label layoutX="144.0" layoutY="215.0" text="Time :" />
+      <Label layoutX="153.0" layoutY="254.0" prefHeight="18.0" prefWidth="42.0" text="File :" />
+      <TextField fx:id="txtNewSongFile" layoutX="195.0" layoutY="246.0" prefHeight="26.0" prefWidth="230.0" />
       <Button fx:id="btnCancelNewSong" layoutX="383.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleCancelNewSong" text="Cancel" />
-      <Button fx:id="btnSaveNewSong" layoutX="457.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleSaveNewSong" text="Save" />
-      <Button fx:id="btnChoose" layoutX="436.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleChoosePath" text="Choose.." />
-      <TextField fx:id="txtNewSongTime" layoutX="195.0" layoutY="211.0" prefHeight="26.0" prefWidth="141.0" />
-      <ChoiceBox fx:id="txtGenreInput" layoutX="191.0" layoutY="172.0" prefWidth="150.0" />
+      <Button fx:id="btnSaveNewSong" layoutX="488.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleSaveNewSong" text="Save" />
+      <Button fx:id="btnChoose" layoutX="436.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleChoosePath" prefHeight="24.0" prefWidth="94.0" text="Choose..." />
+      <TextField fx:id="txtNewSongTime" layoutX="195.0" layoutY="209.0" prefHeight="26.0" prefWidth="121.0" />
+      <ChoiceBox fx:id="txtGenreInput" layoutX="195.0" layoutY="174.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
