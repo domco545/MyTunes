@@ -208,10 +208,33 @@ public class AppController implements Initializable {
     // Deletes a playlist and then it reloads them
     @FXML
     private void deletePlaylist(ActionEvent event) {
-        
-        bllfacade.deletePlaylist(lstPlaylists.getSelectionModel().getSelectedItem());
-        bll.reloadPlaylists();
+        Parent root;
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("DeleteWindow.fxml"));
+            root = loader.load();
+            Stage stage = new Stage();
+            
+            DeleteWindowController del = loader.getController();
+            del.acceptPlaylist(lstPlaylists.getSelectionModel().getSelectedItem());
+            
+             stage.setTitle("Delete");
+            stage.setScene(new Scene(root, 350,250));
+            stage.show();
+            stage.setOnHiding(new EventHandler<WindowEvent>() {
+            @Override
+                public void handle(WindowEvent event) {
+                    bllfacade.reloadPlaylists();
                     init();
+                }
+            });
+                    } catch (IOException ex) {
+            Logger.getLogger(AppController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
+       /* bllfacade.deletePlaylist(lstPlaylists.getSelectionModel().getSelectedItem());
+        bll.reloadPlaylists();
+                    init();*/
     }
     // Handles the event for the Edit Playlist button
     // New window pops up
@@ -268,10 +291,36 @@ public class AppController implements Initializable {
     // Reloads the gui
     @FXML
     private void deleteSong(ActionEvent event) {
-        bllfacade.deleteById(lstSongs.getSelectionModel().getSelectedItem());
+        Parent root;
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("DeleteWindow2.fxml"));
+            root = loader.load();
+            Stage stage = new Stage();
+            
+            DeleteWindow2Controller del = loader.getController();
+            del.acceptSong(lstSongs.getSelectionModel().getSelectedItem());
+            
+             stage.setTitle("Delete");
+            stage.setScene(new Scene(root, 350,250));
+            stage.show();
+            stage.setOnHiding(new EventHandler<WindowEvent>() {
+            @Override
+                public void handle(WindowEvent event) {
+                    bllfacade.reloadPlaylists();
+                    bllfacade.reloadSongs();
+                    init();
+                }
+            });
+                    } catch (IOException ex) {
+            Logger.getLogger(AppController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+       /* bllfacade.deleteById(lstSongs.getSelectionModel().getSelectedItem());
         bllfacade.reloadPlaylists();
         bllfacade.reloadSongs();
-        init();
+        init();*/
     }
     // Handles the New Song button
     // New window pops up 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="238.0" prefWidth="468.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.DeleteWindow2Controller">
+   <children>
+      <Label layoutX="110.0" layoutY="96.0" prefHeight="27.0" prefWidth="210.0" text="Do you want to delete?" />
+      <Button fx:id="YesButton" layoutX="271.0" layoutY="172.0" mnemonicParsing="false" onAction="#deleteSong" text="Yes" />
+      <Button fx:id="NoButton" layoutX="334.0" layoutY="172.0" mnemonicParsing="false" onAction="#noDelete" text="No" />
+   </children>
+</AnchorPane>
