@@ -406,6 +406,8 @@ public class AppController implements Initializable {
         Song s = lstSOP.getSelectionModel().getSelectedItem();
         int plId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
          bllfacade.songUp(plId, s.getId(), s.getPosition());
+         bllfacade.reloadPlaylists();
+         init();
     }
     // Moves a song down if it is not the last one on the playlist
     @FXML
@@ -413,6 +415,8 @@ public class AppController implements Initializable {
         Song s = lstSOP.getSelectionModel().getSelectedItem();
         int plId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
          bllfacade.songDown(plId, s.getId(), s.getPosition());
+         bllfacade.reloadPlaylists();
+         init();
     }
     // It moves the selected song to the selected playlist and reloads them 
     @FXML

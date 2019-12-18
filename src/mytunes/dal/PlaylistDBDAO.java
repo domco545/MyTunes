@@ -178,18 +178,33 @@ public class PlaylistDBDAO {
             return;
         }
             try (Connection con = ds.getConnection()) {
+//            String sql = "UPDATE Songs_On_Playlist\n" +
+//                         "SET position = CASE WHEN position = ? THEN ? \n" +
+//                         "WHEN position = ? THEN ?\n" +
+//                         "Where playlist_id = ?";
+            //probably shitty solution but it works
             String sql = "UPDATE Songs_On_Playlist\n" +
-                         "SET position = CASE WHEN position = ? THEN ? \n" +
-                         "WHEN position = ? THEN ?\n" +
-                         "Where playlist_id = ? AND song_id=?";
+                         "SET old_position = position\n" +
+                         "WHERE position = ? AND playlist_id=?;\n" +
+                         "UPDATE Songs_On_Playlist\n" +
+                         "SET position = ?\n" +
+                         "WHERE old_position = ? AND playlist_id=?;\n" +
+                         "UPDATE Songs_On_Playlist\n" +
+                         "SET position = ?\n" +
+                         "WHERE old_position !=? AND position = ? AND playlist_id=?;\n" +
+                         "UPDATE Songs_On_Playlist\n" +
+                         "SET old_position = 0;";
             
             PreparedStatement p = con.prepareStatement(sql);
             p.setInt(1, position);
-            p.setInt(2, position-1);
+            p.setInt(2, plId);
             p.setInt(3, position-1);
             p.setInt(4, position);
             p.setInt(5, plId);
-            p.setInt(6, songId);
+            p.setInt(6, position+1);
+            p.setInt(7, position);
+            p.setInt(8, position-1);
+            p.setInt(9, plId);
             p.executeUpdate();
         } catch (SQLServerException ex) {
             Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -213,18 +228,33 @@ public class PlaylistDBDAO {
                 return;
             }
             
+//            String sql = "UPDATE Songs_On_Playlist\n" +
+//                         "SET position = CASE WHEN position = ? THEN ? \n" +
+//                         "WHEN position = ? THEN ?\n" +
+//                         "Where playlist_id = ?";
+            //probably shitty solution but it works
             String sql = "UPDATE Songs_On_Playlist\n" +
-                         "SET position = CASE WHEN position = ? THEN ? \n" +
-                         "WHEN position = ? THEN ?\n" +
-                         "Where playlist_id = ? AND song_id=?";
+                         "SET old_position = position\n" +
+                         "WHERE position = ? AND playlist_id=?;\n" +
+                         "UPDATE Songs_On_Playlist\n" +
+                         "SET position = ?\n" +
+                         "WHERE old_position = ? AND playlist_id=?;\n" +
+                         "UPDATE Songs_On_Playlist\n" +
+                         "SET position = ?\n" +
+                         "WHERE old_position !=? AND position = ? AND playlist_id=?;\n" +
+                         "UPDATE Songs_On_Playlist\n" +
+                         "SET old_position = 0;";
             
             PreparedStatement p = con.prepareStatement(sql);
             p.setInt(1, position);
-            p.setInt(2, position+1);
+            p.setInt(2, plId);
             p.setInt(3, position+1);
             p.setInt(4, position);
             p.setInt(5, plId);
-            p.setInt(6, songId);
+            p.setInt(6, position-1);
+            p.setInt(7, position);
+            p.setInt(8, position+1);
+            p.setInt(9, plId);
             p.executeUpdate();
         } catch (SQLServerException ex) {
             Logger.getLogger(PlaylistDBDAO.class.getName()).log(Level.SEVERE, null, ex);
