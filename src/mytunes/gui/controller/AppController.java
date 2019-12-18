@@ -191,7 +191,7 @@ public class AppController implements Initializable {
     private void newPlaylist(ActionEvent event){
         Parent root;
         try{
-            root = FXMLLoader.load(getClass().getResource("NewPlaylist.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/mytunes/gui/view/NewPlaylist.fxml"));
             Stage stage = new Stage();
            
             stage.setTitle("New/Edit Playlist");
@@ -220,7 +220,7 @@ public class AppController implements Initializable {
     private void deletePlaylist(ActionEvent event) {
         Parent root;
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("DeleteWindow.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/mytunes/gui/view/DeleteWindow.fxml"));
             root = loader.load();
             Stage stage = new Stage();
             
@@ -253,7 +253,7 @@ public class AppController implements Initializable {
     private void editPlaylist(ActionEvent event) {
         Parent root;
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("gui/controller/EditPlaylist.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/mytunes/gui/view/EditPlaylist.fxml"));
             root = loader.load();
             Stage stage = new Stage();
             
@@ -280,7 +280,7 @@ public class AppController implements Initializable {
     private void newSong(ActionEvent event) {
          Parent root; 
         try{
-            root = FXMLLoader.load(getClass().getResource("gui/controller/NewSong.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/mytunes/gui/view/NewSong.fxml"));
             Stage stage = new Stage();
            
             stage.setTitle("New Song");
@@ -303,7 +303,7 @@ public class AppController implements Initializable {
     private void deleteSong(ActionEvent event) {
         Parent root;
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("gui/controller/DeleteWindow2.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/mytunes/gui/view/DeleteWindow2.fxml"));
             root = loader.load();
             Stage stage = new Stage();
             
@@ -339,7 +339,7 @@ public class AppController implements Initializable {
     private void editSong(ActionEvent event) {
          Parent root;
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("gui/controller/EditSong.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/mytunes/gui/view/EditSong.fxml"));
             root = loader.load();
             Stage stage = new Stage();
             
