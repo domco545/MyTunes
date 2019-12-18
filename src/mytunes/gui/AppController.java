@@ -170,14 +170,14 @@ public class AppController implements Initializable {
         });
         
         //playlist change listener
-        lstPlaylists.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Playlist>() {
-        @Override
-        public void changed(ObservableValue<? extends Playlist> observable, Playlist oldValue, Playlist newValue) {
-            obsSOP= FXCollections.observableArrayList(lstPlaylists.getSelectionModel().getSelectedItem().getAllSongsOnPlaylist());
-            selectedPlaylistId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
-            lstSOP.setItems(obsSOP);
-            }
-        });
+//        lstPlaylists.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Playlist>() {
+//        @Override
+//        public void changed(ObservableValue<? extends Playlist> observable, Playlist oldValue, Playlist newValue) {
+//            obsSOP= FXCollections.observableArrayList(lstPlaylists.getSelectionModel().getSelectedItem().getAllSongsOnPlaylist());
+//            selectedPlaylistId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
+//            lstSOP.setItems(obsSOP);
+//            }
+//        });
         
 //        player.setOnEndOfMedia(() -> {
 //            nextSong();
@@ -439,17 +439,17 @@ public class AppController implements Initializable {
     //new version is up as event listener
     @FXML
     private void fiilSOPm(MouseEvent event) {
-//        obsSOP= FXCollections.observableArrayList(lstPlaylists.getSelectionModel().getSelectedItem().getAllSongsOnPlaylist());
-//        selectedPlaylistId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
-//        lstSOP.setItems(obsSOP);
+        obsSOP= FXCollections.observableArrayList(lstPlaylists.getSelectionModel().getSelectedItem().getAllSongsOnPlaylist());
+        selectedPlaylistId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
+        lstSOP.setItems(obsSOP);
         
     }
     
     @FXML
     private void fiilSOPk(KeyEvent event) {
-//        obsSOP= FXCollections.observableArrayList(lstPlaylists.getSelectionModel().getSelectedItem().getAllSongsOnPlaylist());
-//        selectedPlaylistId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
-//        lstSOP.setItems(obsSOP);
+        obsSOP= FXCollections.observableArrayList(lstPlaylists.getSelectionModel().getSelectedItem().getAllSongsOnPlaylist());
+        selectedPlaylistId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
+        lstSOP.setItems(obsSOP);
     }
     // Sets the collumns of the tableviews
     public void init(){
@@ -483,9 +483,9 @@ public class AppController implements Initializable {
         media = new Media(new File(path).toURI().toString());
         player = new MediaPlayer(media);
         lblIsPlaying.setText(title);
-        player.play();
-        isPlayingSong = true;
-        btnPlayImg.setImage(imageS);
+//        player.play();
+//        isPlayingSong = true;
+//        btnPlayImg.setImage(imageS);
     }
     
     private void nextSong(){

@@ -63,9 +63,10 @@ public class PlaylistDBDAO {
 // Deletes a Playlist
     public void deletePlaylist(Playlist playlist) {
         try ( Connection con = ds.getConnection()) {
-            String sql = "DELETE FROM Playlist WHERE id=?";
+            String sql = "DELETE FROM Playlist WHERE id=?; DELETE FROM Songs_On_Playlist WHERE playlist_id=?";
             PreparedStatement p = con.prepareStatement(sql);
             p.setInt(1, playlist.getId());
+            p.setInt(2, playlist.getId());
             p.executeUpdate();
 
         } catch (SQLServerException ex) {
@@ -215,7 +216,7 @@ public class PlaylistDBDAO {
     
     public void songDown(int plId, int songId, int position){
         try (Connection con = ds.getConnection()) {
-            String sql1 = "SELECT MAX(position) WHERE playlist_id = ?";
+            String sql1 = "SELECT MAX(position) AS position FROM Songs_On_Playlist WHERE playlist_id = ?";
             PreparedStatement p1 = con.prepareStatement(sql1);
             p1.setInt(1, plId);
             ResultSet rs = p1.executeQuery();
@@ -224,6 +225,7 @@ public class PlaylistDBDAO {
             while(rs.next()){
                 maxpos = rs.getInt("position");
             }
+            System.out.println(maxpos);
             if(position+1 > maxpos){
                 return;
             }
