@@ -56,6 +56,8 @@ Song song;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
       txtGenreInput.getItems().addAll(obsGenre);
+      txtNewSongTime.setDisable(true);
+      txtNewSongFile.setDisable(true);
       
     }    
 

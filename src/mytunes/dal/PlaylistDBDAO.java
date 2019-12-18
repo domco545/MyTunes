@@ -142,9 +142,9 @@ public class PlaylistDBDAO {
     public void addSongToPlaylist(int plId, int sId) {
         try ( Connection con = ds.getConnection()) {
             
-            String sql = "insert into Songs_On_Playlist(position, playlist_id, song_id)\n" +
+            String sql = "insert into Songs_On_Playlist(position, playlist_id, song_id, old_position)\n" +
                          "select \n" +
-                         "MAX(position+1) AS position,?,?\n" +
+                         "IsNull(MAX(position+1),1) AS position,?,?,0\n" +
                          "from Songs_On_Playlist where playlist_id=?;";
             PreparedStatement p = con.prepareStatement(sql);
             p.setInt(1, plId);
