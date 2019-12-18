@@ -169,6 +169,16 @@ public class AppController implements Initializable {
             }
         });
         
+        //playlist change listener
+        lstPlaylists.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Playlist>() {
+        @Override
+        public void changed(ObservableValue<? extends Playlist> observable, Playlist oldValue, Playlist newValue) {
+            obsSOP= FXCollections.observableArrayList(lstPlaylists.getSelectionModel().getSelectedItem().getAllSongsOnPlaylist());
+            selectedPlaylistId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
+            lstSOP.setItems(obsSOP);
+            }
+        });
+        
 //        player.setOnEndOfMedia(() -> {
 //            nextSong();
 //        });
@@ -426,19 +436,20 @@ public class AppController implements Initializable {
         init();
     }
     // Fills up the observable list with the songs on the playlists
+    //new version is up as event listener
     @FXML
     private void fiilSOPm(MouseEvent event) {
-        obsSOP= FXCollections.observableArrayList(lstPlaylists.getSelectionModel().getSelectedItem().getAllSongsOnPlaylist());
-        selectedPlaylistId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
-        lstSOP.setItems(obsSOP);
+//        obsSOP= FXCollections.observableArrayList(lstPlaylists.getSelectionModel().getSelectedItem().getAllSongsOnPlaylist());
+//        selectedPlaylistId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
+//        lstSOP.setItems(obsSOP);
         
     }
     
     @FXML
     private void fiilSOPk(KeyEvent event) {
-        obsSOP= FXCollections.observableArrayList(lstPlaylists.getSelectionModel().getSelectedItem().getAllSongsOnPlaylist());
-        selectedPlaylistId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
-        lstSOP.setItems(obsSOP);
+//        obsSOP= FXCollections.observableArrayList(lstPlaylists.getSelectionModel().getSelectedItem().getAllSongsOnPlaylist());
+//        selectedPlaylistId = lstPlaylists.getSelectionModel().getSelectedItem().getId();
+//        lstSOP.setItems(obsSOP);
     }
     // Sets the collumns of the tableviews
     public void init(){
