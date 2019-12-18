@@ -201,7 +201,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <Label fx:id="lblIsPlaying" layoutX="384.0" layoutY="64.0" styleClass="text" />
+            <Label fx:id="lblIsPlaying" layoutX="323.0" layoutY="66.0" prefHeight="15.0" prefWidth="147.0" styleClass="text" />
          </children>
     </AnchorPane>
       <ListView prefHeight="375.0" prefWidth="172.0" />
