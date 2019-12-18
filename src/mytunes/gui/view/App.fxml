@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.AppController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.controller.AppController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -43,7 +43,7 @@
     </MenuBar>
     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="940.0" VBox.vgrow="ALWAYS">
          <children>
-            <Button fx:id="btnNewPlst" layoutX="58.0" layoutY="562.0" mnemonicParsing="false" onAction="#newPlaylist" text="New...">
+            <Button fx:id="btnNewPlst" layoutX="58.0" layoutY="563.0" mnemonicParsing="false" onAction="#newPlaylist" text="New...">
                <font>
                   <Font size="14.0" />
                </font>
@@ -70,7 +70,7 @@
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="20.0">
                      <image>
-                        <Image url="@../../icons/button5.png" />
+                        <Image url="@../../../icons/button5.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -139,7 +139,7 @@
                <graphic>
                   <ImageView fx:id="btnFind" fitHeight="21.0" fitWidth="27.0">
                      <image>
-                        <Image url="@../../icons/button4.png" />
+                        <Image url="@../../../icons/button4.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -149,7 +149,7 @@
                <graphic>
                   <ImageView fx:id="btnPreviousSong" fitHeight="39.0" fitWidth="39.0">
                      <image>
-                        <Image url="@../../icons/button3.png" />
+                        <Image url="@../../../icons/button3.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -158,7 +158,7 @@
                <graphic>
                   <ImageView fx:id="btnPlayImg" fitHeight="40.0" fitWidth="44.0">
                      <image>
-                        <Image url="@../../icons/button1.png" />
+                        <Image url="@../../../icons/button1.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -167,7 +167,7 @@
                <graphic>
                   <ImageView fx:id="btnNextSong" fitHeight="39.0" fitWidth="39.0">
                      <image>
-                        <Image url="@../../icons/button2.png" />
+                        <Image url="@../../../icons/button2.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -179,7 +179,7 @@
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="20.0" style="-fx-rotate: 180;">
                      <image>
-                        <Image url="@../../icons/button5.png" />
+                        <Image url="@../../../icons/button5.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -191,7 +191,7 @@
                <graphic>
                   <ImageView fx:id="btnAddToPL" fitHeight="23.0" fitWidth="20.0" style="-fx-rotate: 270;">
                      <image>
-                        <Image url="@../../icons/button5.png" />
+                        <Image url="@../../../icons/button5.png" />
                      </image>
                   </ImageView>
                </graphic>
